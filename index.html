@@ -102,6 +102,62 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
   main{padding-block:20px 48px}
 }
 @media (prefers-reduced-motion:no-preference){.panel{animation:fade .25s ease}@keyframes fade{from{opacity:.4}to{opacity:1}}}
+
+.updated{font-size:13px;color:var(--muted);margin:10px 0 0;font-variant-numeric:tabular-nums}
+.tab .short{display:none}
+.pill{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;line-height:1.4;align-self:flex-start;white-space:nowrap}
+.pill.booked{background:var(--finch);color:#1E3560}
+.pill.walkin{background:var(--peach);color:#5A2A14}
+.pill.inline{font-size:11px;padding:1px 8px;vertical-align:2px}
+.res-list{display:grid;gap:14px}
+.res{display:grid;grid-template-columns:120px 1fr;gap:18px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
+.res-when{border-right:2px solid var(--butter);padding-right:14px}
+.res-day{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.res-time{font-family:var(--display);font-size:30px;line-height:1.1;font-variant-numeric:tabular-nums}
+.res-body{min-width:0;display:flex;flex-direction:column;gap:8px}
+.res-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.res h3{font-family:var(--display);font-weight:400;font-size:22px;margin:0;line-height:1.15}
+.res dl{margin:0;display:grid;gap:4px;font-size:15px}
+.res dl div{display:grid;grid-template-columns:64px 1fr;gap:8px}
+.res dt{color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.06em;font-weight:700;padding-top:2px}
+.res dd{margin:0;min-width:0}
+.res-note{margin:0;font-size:14px;color:var(--warn)}
+@media (max-width:640px){
+  .tab .short{display:inline}
+  .tab .long{display:none}
+  .tab{font-size:14px;padding:7px 11px}
+  .res{grid-template-columns:1fr;gap:10px;padding:16px}
+  .res-when{border-right:0;border-bottom:2px solid var(--butter);padding:0 0 8px;display:flex;align-items:baseline;gap:10px}
+  .res-time{font-size:24px}
+}
+
+.updated{font-size:13px;color:var(--muted);margin:10px 0 0;font-variant-numeric:tabular-nums}
+.tab .short{display:none}
+.pill{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;line-height:1.4;align-self:flex-start;white-space:nowrap}
+.pill.booked{background:var(--finch);color:#1E3560}
+.pill.walkin{background:var(--peach);color:#5A2A14}
+.pill.inline{font-size:11px;padding:1px 8px;vertical-align:2px}
+.res-list{display:grid;gap:14px}
+.res{display:grid;grid-template-columns:120px 1fr;gap:18px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
+.res-when{border-right:2px solid var(--butter);padding-right:14px}
+.res-day{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.res-time{font-family:var(--display);font-size:30px;line-height:1.1;font-variant-numeric:tabular-nums}
+.res-body{min-width:0;display:flex;flex-direction:column;gap:8px}
+.res-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.res h3{font-family:var(--display);font-weight:400;font-size:22px;margin:0;line-height:1.15}
+.res dl{margin:0;display:grid;gap:4px;font-size:15px}
+.res dl div{display:grid;grid-template-columns:64px 1fr;gap:8px}
+.res dt{color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.06em;font-weight:700;padding-top:2px}
+.res dd{margin:0;min-width:0}
+.res-note{margin:0;font-size:14px;color:var(--muted)}
+@media (max-width:640px){
+  .tab .short{display:inline}
+  .tab .long{display:none}
+  .tab{font-size:14px;padding:7px 11px}
+  .res{grid-template-columns:1fr;gap:10px;padding:16px}
+  .res-when{border-right:0;border-bottom:2px solid var(--butter);padding:0 0 8px;display:flex;align-items:baseline;gap:10px}
+  .res-time{font-size:24px}
+}
 </style>
 
 </head>
@@ -110,51 +166,111 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
 <header class="hero"><div class="wrap">
   <div class="eyebrow">Fri 6 – Mon 9 November 2026</div>
   <h1>Rose &amp; Lana's <em>London</em> Weekend</h1>
-  <p class="lede">Shoreditch shopping, an Islington Saturday, a lazy Sunday pick and a cosy night in. Plan first, then every spot with its Google Maps link, then where to eat and drink.</p>
+  <p class="lede">Shoreditch shopping, an Islington Saturday, a slow Sunday in Marylebone and a roast at The Drapers Arms. The plan, every booking, and every spot with its Google Maps link.</p>
+  <p class="updated">Last updated 1 November 2026</p>
+  <p class="updated">Last updated 1 November 2026</p>
 </div></header>
 
 <nav class="tabs" aria-label="Sections"><div class="wrap" role="tablist">
-  <button class="tab" role="tab" id="t-plan" data-tab="plan">The plan</button>
+  <button class="tab" role="tab" id="t-plan" data-tab="plan"><span class="long">The plan</span><span class="short">Plan</span></button>
+  <button class="tab" role="tab" id="t-res" data-tab="res"><span class="long">Reservations</span><span class="short">Bookings</span></button>
   <button class="tab" role="tab" id="t-places" data-tab="places">Places</button>
   <button class="tab" role="tab" id="t-coffee" data-tab="coffee">Coffee<span class="long"> &amp; sweet</span></button>
   <button class="tab" role="tab" id="t-food" data-tab="food">Food<span class="long"> &amp; drinks</span></button>
 </div></nav>
 
 <main><div class="wrap">
-  <section class="panel" id="p-plan" role="tabpanel" aria-labelledby="t-plan"><h2>The plan</h2><p class="sub">Times are loose. Warnings in coral are opening-hour clashes worth knowing.</p><div class="days"><div class="day"><div class="day-head"><div class="dow">Friday</div><div class="date">6 Nov · Spitalfields & Shoreditch</div><div class="swatch" style="background:#FFE497"></div></div>
-   <ol class="stops"><li class="stop"><div class="time">Midday</div><div class="what">Arrive, drop bags and chill
-   </div></li><li class="stop"><div class="time">4:00pm</div><div class="what">Coffee and cake at <b>Townhouse</b><span class="note">5 Fournier St, a 1700s house with a café hidden downstairs</span><span class="flag">⚑ Café closes around 5pm, gallery at 6pm</span>
-   </div></li><li class="stop"><div class="time">By 6pm</div><div class="what"><b>Nobody's Child</b> in Spitalfields Market<span class="note">Closes 6pm, so go first</span>
-   </div></li><li class="stop"><div class="time">By 7pm</div><div class="what">Shop around: <b>InSpitalfields, The Mercantile, Goodhood, Atika, Rokit, Rough Trade, Earl of East, Reformation</b><span class="note">Spitalfields first, then Hanbury St and Brick Lane, ending on Redchurch St</span><span class="flag">⚑ Rough Trade East closes at 6pm on Fridays, so do it before 6</span>
-   </div></li><li class="stop"><div class="time">7:15pm</div><div class="what">Dinner at <b>Lahpet</b> (Burmese)<span class="note">Bethnal Green Rd, 5 min walk from Redchurch St</span>
-   </div></li><li class="stop"><div class="time">9:15pm</div><div class="what">Drinks at <b>Seed Library</b><span class="note">Cocktails, vinyl DJ from 9pm. Kay joins for drinks</span>
-   </div></li></ol></div><div class="day"><div class="day-head"><div class="dow">Saturday</div><div class="date">7 Nov · Islington, then back east</div><div class="swatch" style="background:#FFBA9C"></div></div>
-   <ol class="stops"><li class="stop"><div class="time">11:00am</div><div class="what">5K run around Highbury and Islington
-   </div></li><li class="stop"><div class="time">After</div><div class="what">Coffee and bites around Camden Passage: <b>Pophams, Uchi Bake, Katsute 100</b> and <b>Japanese Curry Bread</b><span class="flag">⚑ Pophams and the curry bread both close at 4pm, and Pophams pastries sell out early</span>
-   </div></li><li class="stop"><div class="time">Afternoon</div><div class="what">Camden Passage antique market, Upper Street and <b>Anthropologie</b><span class="note">Saturday is one of the two big market days</span>
-   </div></li><li class="stop"><div class="time">3:00pm</div><div class="what">Home to rest, shower and get ready
-   </div></li><li class="stop"><div class="time">5:30pm</div><div class="what">Drinks at <b>Homeboy</b> (Essex Rd)
-   </div></li><li class="stop"><div class="time">7:45pm</div><div class="what">Dinner at <b>Som Saa</b> (Thai)<span class="note">Commercial St, E1. About 25 min from Homeboy, so leave by 7:15</span>
-   </div></li><li class="stop"><div class="time">~10pm</div><div class="what"><b>Blues Kitchen Shoreditch</b><span class="note">Live band then DJs, open till 3am. 10 min walk from Som Saa</span>
-   </div></li></ol></div><div class="day"><div class="day-head"><div class="dow">Sunday</div><div class="date">8 Nov · slow start, pick one</div><div class="swatch" style="background:#CFE1F3"></div></div>
-   <ol class="stops"><li class="stop"><div class="time">Midday</div><div class="what">Slow start, then choose:
-   <div class="opts"><div class="opt"><b>Option A · Classic Central</b><br>Covent Garden, Seven Dials, Carnaby, Oxford St and Harry Potter at <b style='color:inherit'>House of MinaLima</b> (Soho), roast at Blacklock Soho. Book Blacklock.</div><div class="opt"><b>Option B · Marylebone</b><br>Farmers' market (10am–2pm, so aim to arrive by 1), bakeries, Marylebone High St, cosy pub roast</div><div class="opt"><b>Option C · Hampstead</b><br>Crêpes at La Crêperie de Hampstead, Hampstead Heath and Parliament Hill, village wander, roast at The Holly Bush</div></div></div></li><li class="stop"><div class="time">Evening</div><div class="what">Cosy night in, movies and chill
-   </div></li></ol></div><div class="day"><div class="day-head"><div class="dow">Monday</div><div class="date">9 Nov · home time</div><div class="swatch" style="background:#7197D3"></div></div>
-   <ol class="stops"><li class="stop"><div class="time">Early</div><div class="what">Breakfast at a café nearby<span class="note">Vertige or La Maison open from 7–8am on Mondays</span>
-   </div></li><li class="stop"><div class="time">Morning</div><div class="what">Jess starts her prep, girls pack up
-   </div></li><li class="stop"><div class="time">~10:30am</div><div class="what">Head to the airport<span class="note">Lana's flight is at 1:50pm</span>
-   </div></li></ol></div></div></section>
+  <section class="panel" id="p-plan" role="tabpanel" aria-labelledby="t-plan"><h2>The plan</h2><p class="sub">Times are loose. Warnings in coral are opening-hour clashes worth knowing, and <span class="pill booked inline">✓ Booked</span> marks a reservation.</p><div class="days"><div class="day"><div class="day-head"><div class="dow">Friday</div><div class="date">6 Nov · Spitalfields & Shoreditch</div><div class="swatch" style="background:#FFE497"></div></div>
+   <ol class="stops"><li class="stop"><div class="time">Midday</div><div class="what">Arrive, drop bags and chill</div></li><li class="stop"><div class="time">4:00pm</div><div class="what">Coffee and cake at <b>Townhouse</b><span class="note">5 Fournier St, a 1700s house with a café hidden downstairs</span><span class="flag">⚑ Café closes around 5pm, gallery at 6pm</span></div></li><li class="stop"><div class="time">By 6pm</div><div class="what"><b>Nobody's Child</b> in Spitalfields Market<span class="note">Closes 6pm, so go first</span></div></li><li class="stop"><div class="time">Until 6:35</div><div class="what">Shop around: <b>InSpitalfields, The Mercantile, Goodhood, Atika, Rokit, Rough Trade, Earl of East, Reformation</b><span class="note">Spitalfields first, then Hanbury St and Brick Lane, ending on Redchurch St</span><span class="flag">⚑ Rough Trade East closes at 6pm on Fridays, so do it before 6</span></div></li><li class="stop"><div class="time">6:45pm</div><div class="what">Dinner at <b>Lahpet</b> (Burmese) <span class="pill booked inline">✓ Booked</span><span class="note">Booked for 4: Jess, Kay Kay, Rose, Lana. Leave by about 8:30</span></div></li><li class="stop"><div class="time">8:45pm</div><div class="what">Drinks at <b>Seed Library</b> <span class="pill booked inline">✓ Booked</span><span class="note">Booked for 4 under Jessica Lin. Vinyl DJ from 9pm. 10 min walk from Lahpet</span></div></li></ol></div><div class="day"><div class="day-head"><div class="dow">Saturday</div><div class="date">7 Nov · Islington, then back east</div><div class="swatch" style="background:#FFBA9C"></div></div>
+   <ol class="stops"><li class="stop"><div class="time">11:00am</div><div class="what">5K run around Highbury and Islington</div></li><li class="stop"><div class="time">After</div><div class="what">Coffee and bites around Camden Passage: <b>Pophams, Uchi Bake, Katsute 100</b> and <b>Japanese Curry Bread</b><span class="flag">⚑ Pophams and the curry bread both close at 4pm, and Pophams pastries sell out early</span></div></li><li class="stop"><div class="time">Afternoon</div><div class="what">Camden Passage antique market, Upper Street and <b>Anthropologie</b><span class="note">Saturday is one of the two big market days</span></div></li><li class="stop"><div class="time">3:00pm</div><div class="what">Home to rest, shower and get ready</div></li><li class="stop"><div class="time">5:30pm</div><div class="what">Drinks at <b>Homeboy</b> (Essex Rd)<span class="note">Bigger group. Jess, Lana and Rose leave about 7:25 for Som Saa</span></div></li><li class="stop"><div class="time">8:00pm</div><div class="what">Dinner at <b>Som Saa</b> (Thai) <span class="pill booked inline">✓ Booked</span><span class="note">Booked for 3: Jess, Lana, Rose. Leave about 9:55</span></div></li><li class="stop"><div class="time">10:15pm</div><div class="what"><b>Blues Kitchen Shoreditch</b><span class="note">Walk-in, about 20 min walk from Som Saa. Christian joins. Live band then DJs, open till 3am</span></div></li></ol></div><div class="day"><div class="day-head"><div class="dow">Sunday</div><div class="date">8 Nov · a slow day in Marylebone</div><div class="swatch" style="background:#CFE1F3"></div></div>
+   <ol class="stops"><li class="stop"><div class="time">11:45am</div><div class="what">Leave home<span class="note">About 30 min: Victoria line to Oxford Circus, then Bakerloo to Baker Street</span></div></li><li class="stop"><div class="time">12:30pm</div><div class="what"><b>Marylebone Farmers' Market</b><span class="note">St Vincent St. Graze, but save room</span><span class="flag">⚑ Market ends at 2pm</span></div></li><li class="stop"><div class="time">1:15pm</div><div class="what">Honey butter toast at <b>Arôme Bakery</b><span class="note">27 Duke St, 8 min walk south. Expect a short queue</span><span class="flag">⚑ Closes 4pm on Sundays</span></div></li><li class="stop"><div class="time">2:00pm</div><div class="what">Coffee at <b>WatchHouse</b><span class="note">New Cavendish St, on the way back north. Or <b>The Monocle Café</b> on Chiltern St</span></div></li><li class="stop"><div class="time">2:30pm</div><div class="what">Wander and shop<span class="note">Marylebone Lane (<b>Koibird</b>), then the High Street (<b>Daunt Books, Mejuri, Wyse, Luca Faloni</b>), <b>Rococo Chocolates</b> on Moxon St, and Chiltern St (<b>Cire Trudon, Sophie Hulme</b>)</span><span class="flag">⚑ Most boutiques close around 5–6pm on Sundays</span></div></li><li class="stop"><div class="time">~5:45pm</div><div class="what">Head home to freshen up</div></li><li class="stop"><div class="time">7:00pm</div><div class="what">Sunday roast at <b>The Drapers Arms</b> <span class="pill booked inline">✓ Booked</span><span class="note">Booked for 4: Jess, Lana, Rose, Christian. 10 min walk from Highbury & Islington</span><span class="flag">⚑ Check the roast is still served at 7pm</span></div></li><li class="stop"><div class="time">After</div><div class="what">Cosy night in, movies and chill</div></li></ol></div><div class="day"><div class="day-head"><div class="dow">Monday</div><div class="date">9 Nov · home time</div><div class="swatch" style="background:#7197D3"></div></div>
+   <ol class="stops"><li class="stop"><div class="time">Early</div><div class="what">Breakfast at a café nearby<span class="note">Vertige or La Maison open from 7–8am on Mondays</span></div></li><li class="stop"><div class="time">Morning</div><div class="what">Jess starts her prep, girls pack up</div></li><li class="stop"><div class="time">~10:30am</div><div class="what">Head to the airport<span class="note">Lana's flight is at 1:50pm</span></div></li></ol></div></div></section>
+  <section class="panel" id="p-res" role="tabpanel" aria-labelledby="t-res"><h2>Reservations</h2><p class="sub">Everything booked, plus the walk-ins, in order.</p><div class="res-list"><article class="res">
+   <div class="res-when"><div class="res-day">Fri 6 Nov</div><div class="res-time">6:45pm</div></div>
+   <div class="res-body">
+     <div class="res-top"><h3>Lahpet</h3><span class="pill booked">✓ Booked</span></div>
+     <div class="kind">Burmese dinner</div>
+     <dl>
+       <div><dt>Party</dt><dd>4 · Jess, Kay Kay, Rose, Lana</dd></div>
+       
+       <div><dt>Where</dt><dd>58 Bethnal Green Rd, E1 6JW</dd></div>
+     </dl>
+     <p class="res-note">Leave by about 8:30pm for Seed Library.</p>
+     <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Lahpet%2058%20Bethnal%20Green%20Rd%2C%20E1%206JW&query_place_id=ChIJOb-UJ-YcdkgR8q4D1DuMeJ4" target="_blank" rel="noopener">Open in Google Maps</a>
+   </div></article><article class="res">
+   <div class="res-when"><div class="res-day">Fri 6 Nov</div><div class="res-time">8:45pm</div></div>
+   <div class="res-body">
+     <div class="res-top"><h3>Seed Library</h3><span class="pill booked">✓ Booked</span></div>
+     <div class="kind">Cocktail bar</div>
+     <dl>
+       <div><dt>Party</dt><dd>4 · Jess, Kay Kay, Rose, Lana</dd></div>
+       <div><dt>Under</dt><dd>Jessica Lin</dd></div>
+       <div><dt>Where</dt><dd>100 Shoreditch High St, E1 6JQ</dd></div>
+     </dl>
+     <p class="res-note">Booked through SevenRooms. Vinyl DJ from 9pm.</p>
+     <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Seed%20Library%20100%20Shoreditch%20High%20St%2C%20E1%206JQ&query_place_id=ChIJK0w18ZgddkgRQYTOSLWTceY" target="_blank" rel="noopener">Open in Google Maps</a>
+   </div></article><article class="res">
+   <div class="res-when"><div class="res-day">Sat 7 Nov</div><div class="res-time">5:30pm</div></div>
+   <div class="res-body">
+     <div class="res-top"><h3>Homeboy</h3><span class="pill walkin">Walk-in</span></div>
+     <div class="kind">Irish cocktail bar</div>
+     <dl>
+       <div><dt>Party</dt><dd>Group · Bigger group</dd></div>
+       
+       <div><dt>Where</dt><dd>108 Essex Rd, N1 8LX</dd></div>
+     </dl>
+     <p class="res-note">No booking. Jess, Lana and Rose leave about 7:25pm.</p>
+     <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Homeboy%20108%20Essex%20Rd%2C%20N1%208LX&query_place_id=ChIJ4UBjIAobdkgR0ixhyjWiytw" target="_blank" rel="noopener">Open in Google Maps</a>
+   </div></article><article class="res">
+   <div class="res-when"><div class="res-day">Sat 7 Nov</div><div class="res-time">8:00pm</div></div>
+   <div class="res-body">
+     <div class="res-top"><h3>Som Saa</h3><span class="pill booked">✓ Booked</span></div>
+     <div class="kind">Thai dinner</div>
+     <dl>
+       <div><dt>Party</dt><dd>3 · Jess, Lana, Rose</dd></div>
+       
+       <div><dt>Where</dt><dd>43A Commercial St, E1 6BD</dd></div>
+     </dl>
+     <p class="res-note">Get the deep-fried whole sea bass. Leave about 9:55pm for Blues Kitchen.</p>
+     <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Som%20Saa%2043A%20Commercial%20St%2C%20E1%206BD&query_place_id=ChIJobyn_rQcdkgRE042NxgeR1k" target="_blank" rel="noopener">Open in Google Maps</a>
+   </div></article><article class="res">
+   <div class="res-when"><div class="res-day">Sat 7 Nov</div><div class="res-time">10:15pm</div></div>
+   <div class="res-body">
+     <div class="res-top"><h3>Blues Kitchen Shoreditch</h3><span class="pill walkin">Walk-in</span></div>
+     <div class="kind">Live music bar</div>
+     <dl>
+       <div><dt>Party</dt><dd>4 · Jess, Lana, Rose, Christian</dd></div>
+       
+       <div><dt>Where</dt><dd>134–146 Curtain Rd, EC2A 3AR</dd></div>
+     </dl>
+     <p class="res-note">No booking. A short queue is fine. Open till 3am.</p>
+     <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Blues%20Kitchen%20Shoreditch%20134%E2%80%93146%20Curtain%20Rd%2C%20EC2A%203AR&query_place_id=ChIJv16nk7ocdkgR5P9wUhZgUpU" target="_blank" rel="noopener">Open in Google Maps</a>
+   </div></article><article class="res">
+   <div class="res-when"><div class="res-day">Sun 8 Nov</div><div class="res-time">7:00pm</div></div>
+   <div class="res-body">
+     <div class="res-top"><h3>The Drapers Arms</h3><span class="pill booked">✓ Booked</span></div>
+     <div class="kind">Sunday roast</div>
+     <dl>
+       <div><dt>Party</dt><dd>4 · Jess, Lana, Rose, Christian</dd></div>
+       
+       <div><dt>Where</dt><dd>44 Barnsbury St, N1 1ER</dd></div>
+     </dl>
+     <p class="res-note">Check the roast is still served at 7pm. Share the côte de boeuf.</p>
+     <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=The%20Drapers%20Arms%2044%20Barnsbury%20St%2C%20N1%201ER&query_place_id=ChIJfeov2mgbdkgRlsuCvg281hU" target="_blank" rel="noopener">Open in Google Maps</a>
+   </div></article></div></section>
   <section class="panel" id="p-places" role="tabpanel" aria-labelledby="t-places"><h2>Places</h2><p class="sub">Every stop in the plan, with Google rating, hours on the day and a Maps link.</p><div class="filters"><button class="chip" id="f-all" data-f="all" aria-pressed="true">All days</button><button class="chip" id="f-fri" data-f="fri" aria-pressed="false">Friday</button><button class="chip" id="f-sat" data-f="sat" aria-pressed="false">Saturday</button><button class="chip" id="f-sun" data-f="sun" aria-pressed="false">Sunday</button><button class="chip" id="f-mon" data-f="mon" aria-pressed="false">Monday</button></div><div class="dayblock" data-day="fri"><div class="section-label">Friday</div><div class="grid"><article class="card">
    <div class="card-top"><div><h3>Townhouse</h3><div class="kind">Café · gallery shop</div></div>
    <div class="rating"><span class="n">4.5</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">182 Google reviews</span></div></div>
+   
    <p>A gallery of ceramics, antiques and books in an 18th-century house, with a tiny café in the old basement kitchen and a glass-roofed courtyard.</p>
    <div class="said"><span class="lbl">What reviewers say</span>People call it a hidden gem that feels like sitting in someone's period kitchen. The cardamom cake and lattes get repeat praise, and many first-timers nearly miss the café downstairs.</div>
-   <div class="meta"><span>📍 5 Fournier St, E1</span><span>🕒 Café Fri until ~5pm · gallery 11am–6pm · closed Mon</span><span class="tip">→ Head straight downstairs for the café, and aim to arrive by 4. It winds down before the gallery closes.</span></div>
+   <div class="meta"><span>📍 5 Fournier St, E1</span><span>🕒 Café Fri until ~5pm · gallery 11am–6pm · closed Mon</span><span class="tip">→ Head straight downstairs for the café, and aim to arrive by 4.</span></div>
    <div class="tags"><span class="tag">Friday</span></div>
    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Townhouse%205%20Fournier%20St%2C%20E1&query_place_id=ChIJ60sgzLUcdkgR3Jwsb2Ry1Rw" target="_blank" rel="noopener">Open in Google Maps</a>
   </article><article class="card">
    <div class="card-top"><div><h3>Nobody's Child</h3><div class="kind">Women's clothing</div></div>
    <div class="rating"><span class="n">3.9</span> <span class="stars" aria-hidden="true">★★★★☆</span><span class="c">21 Google reviews</span></div></div>
+   
    <p>British label known for printed midi dresses and easy separates, in the Spitalfields Market strip.</p>
    <div class="said"><span class="lbl">What reviewers say</span>Shoppers like the staff, who are happy to help style a full outfit. Some find the store warm inside and note that online returns can't be handled in-store.</div>
    <div class="meta"><span>📍 71 Brushfield St, E1</span><span>🕒 Fri 10am–6pm</span><span class="tip">→ Closes at 6pm, so it's the first shopping stop.</span></div>
@@ -163,14 +279,16 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
   </article><article class="card">
    <div class="card-top"><div><h3>InSpitalfields</h3><div class="kind">Gift &amp; lifestyle shop</div></div>
    <div class="rating"><span class="n">4.2</span> <span class="stars" aria-hidden="true">★★★★☆</span><span class="c">126 Google reviews</span></div></div>
+   
    <p>A big browse of quirky gifts: journals, prints, books, games, homeware and wellness bits.</p>
    <div class="said"><span class="lbl">What reviewers say</span>Most reviewers love spending ages browsing and find it great for presents. A few say prices run high.</div>
-   <div class="meta"><span>📍 13a Lamb St, E1</span><span>🕒 Hours not listed, usually ~11am–6pm</span></div>
+   <div class="meta"><span>📍 13a Lamb St, E1</span><span>🕒 Usually ~11am–6pm</span></div>
    <div class="tags"><span class="tag">Friday</span></div>
    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=InSpitalfields%2013a%20Lamb%20St%2C%20E1&query_place_id=ChIJZUfZHbQcdkgRiON4aE7PRLs" target="_blank" rel="noopener">Open in Google Maps</a>
   </article><article class="card">
    <div class="card-top"><div><h3>The Mercantile</h3><div class="kind">Women's boutique</div></div>
    <div class="rating"><span class="n">3.9</span> <span class="stars" aria-hidden="true">★★★★☆</span><span class="c">91 Google reviews</span></div></div>
+   
    <p>Independent boutique stocking brands like Damson Madder and Baggu bags, plus perfume.</p>
    <div class="said"><span class="lbl">What reviewers say</span>Mixed. Some praise the friendly team and the edit of brands; several recent reviews describe brusque service.</div>
    <div class="meta"><span>📍 17A Lamb St, E1</span><span>🕒 Fri 11am–6pm</span><span class="tip">→ Busy, packed shop, so ask if you want something specific.</span></div>
@@ -179,6 +297,7 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
   </article><article class="card">
    <div class="card-top"><div><h3>Goodhood</h3><div class="kind">Concept store + café</div></div>
    <div class="rating"><span class="n">3.8</span> <span class="stars" aria-hidden="true">★★★★☆</span><span class="c">657 Google reviews</span></div></div>
+   
    <p>A large, cool concept store for fashion, beauty and homeware, with its own café, Commune.</p>
    <div class="said"><span class="lbl">What reviewers say</span>Fans love the curation and the space. The café gets real praise for lattes and baked goods. Some service complaints.</div>
    <div class="meta"><span>📍 15 Hanbury St, E1</span><span>🕒 Fri 11am–7pm</span></div>
@@ -187,6 +306,7 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
   </article><article class="card">
    <div class="card-top"><div><h3>Atika</h3><div class="kind">Vintage warehouse</div></div>
    <div class="rating"><span class="n">4.3</span> <span class="stars" aria-hidden="true">★★★★☆</span><span class="c">550 Google reviews</span></div></div>
+   
    <p>Two floors of curated vintage clothing and accessories for men and women in an old warehouse.</p>
    <div class="said"><span class="lbl">What reviewers say</span>A vintage lover's favourite with huge variety and friendly staff. Not bargain prices, and you need to dig.</div>
    <div class="meta"><span>📍 55–59 Hanbury St, E1</span><span>🕒 Fri 11am–7pm</span><span class="tip">→ Check the reduced section downstairs.</span></div>
@@ -195,6 +315,7 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
   </article><article class="card">
    <div class="card-top"><div><h3>Rokit</h3><div class="kind">Vintage clothing</div></div>
    <div class="rating"><span class="n">4.0</span> <span class="stars" aria-hidden="true">★★★★☆</span><span class="c">229 Google reviews</span></div></div>
+   
    <p>Long-running Brick Lane vintage store, good for shirts, denim and outerwear.</p>
    <div class="said"><span class="lbl">What reviewers say</span>Good for functional finds at mid prices, fewer wow pieces. Staff reviews are mixed and one shopper flagged a fast-fashion item sold as vintage.</div>
    <div class="meta"><span>📍 101 Brick Ln, E1</span><span>🕒 Fri 11am–7pm</span><span class="tip">→ Check labels.</span></div>
@@ -203,14 +324,16 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
   </article><article class="card">
    <div class="card-top"><div><h3>Rough Trade East</h3><div class="kind">Record shop · venue</div></div>
    <div class="rating"><span class="n">4.7</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">3,094 Google reviews</span></div></div>
+   
    <p>Iconic indie record store in a warehouse: vinyl, books, a small stage and a café-bar.</p>
-   <div class="said"><span class="lbl">What reviewers say</span>Reviewers rave about the selection and the atmosphere. Many say you come in for one record and leave with several. In-store gigs are a highlight.</div>
+   <div class="said"><span class="lbl">What reviewers say</span>Reviewers rave about the selection and the atmosphere. Many say you come in for one record and leave with several.</div>
    <div class="meta"><span>📍 Old Truman Brewery, Brick Ln</span><span>🕒 Fri 10am–6pm</span><span class="tip">→ Closes at 6pm on Fridays.</span></div>
    <div class="tags"><span class="tag">Friday</span></div>
    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Rough%20Trade%20East%20Old%20Truman%20Brewery%2C%20Brick%20Ln&query_place_id=ChIJNWOBQbYcdkgRwHyVPW3qnIc" target="_blank" rel="noopener">Open in Google Maps</a>
   </article><article class="card">
    <div class="card-top"><div><h3>Earl of East</h3><div class="kind">Candles &amp; homeware</div></div>
    <div class="rating"><span class="n">4.3</span> <span class="stars" aria-hidden="true">★★★★☆</span><span class="c">44 Google reviews</span></div></div>
+   
    <p>Candle and scent brand with incense, glassware, books and pantry treats, plus a little coffee corner.</p>
    <div class="said"><span class="lbl">What reviewers say</span>Lovely, helpful staff and great for host gifts. A bit pricey, and one person found the candle scent throw weak.</div>
    <div class="meta"><span>📍 33 Redchurch St, E2</span><span>🕒 Fri 10am–7pm</span></div>
@@ -219,6 +342,7 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
   </article><article class="card">
    <div class="card-top"><div><h3>Reformation</h3><div class="kind">Women's clothing</div></div>
    <div class="rating"><span class="n">4.0</span> <span class="stars" aria-hidden="true">★★★★☆</span><span class="c">33 Google reviews</span></div></div>
+   
    <p>The LA label's Shoreditch store: dresses, knits, denim and some bridal.</p>
    <div class="said"><span class="lbl">What reviewers say</span>Several shoppers name individual staff who went out of their way to find sizes. A couple of reviews mention cool, inattentive service.</div>
    <div class="meta"><span>📍 19–29 Redchurch St, E2</span><span>🕒 Fri 11am–7pm</span></div>
@@ -227,22 +351,25 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
   </article><article class="card">
    <div class="card-top"><div><h3>Lahpet</h3><div class="kind">Burmese restaurant · ££</div></div>
    <div class="rating"><span class="n">4.5</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">1,470 Google reviews</span></div></div>
+   <div class="pill booked">✓ Booked 6:45pm for 4</div>
    <p>Modern Burmese cooking with a cocktail bar. Signature tea leaf salad, coconut chicken noodles and curries.</p>
-   <div class="said"><span class="lbl">What reviewers say</span>Bold, fragrant flavours. The coconut chicken noodles, fried chicken and pandan crème brûlée come up again and again. One diner felt sides are pricey.</div>
+   <div class="said"><span class="lbl">What reviewers say</span>Bold, fragrant flavours. The coconut chicken noodles, fried chicken and pandan crème brûlée come up again and again.</div>
    <div class="meta"><span>📍 58 Bethnal Green Rd, E1</span><span>🕒 Fri 3pm–10pm</span><span class="tip">→ Order the tea leaf salad and the pandan brûlée.</span></div>
    <div class="tags"><span class="tag">Friday</span></div>
    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Lahpet%2058%20Bethnal%20Green%20Rd%2C%20E1&query_place_id=ChIJOb-UJ-YcdkgR8q4D1DuMeJ4" target="_blank" rel="noopener">Open in Google Maps</a>
   </article><article class="card">
    <div class="card-top"><div><h3>Seed Library</h3><div class="kind">Cocktail bar · ££</div></div>
    <div class="rating"><span class="n">4.6</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">463 Google reviews</span></div></div>
+   <div class="pill booked">✓ Booked 8:45pm for 4</div>
    <p>Low-lit, 70s-style lounge under the One Hundred Shoreditch hotel, from the Mr Lyan team, with vinyl DJs.</p>
-   <div class="said"><span class="lbl">What reviewers say</span>Warm retro vibe, inventive cocktails and staff who make celebrations feel special. Good for groups and dates.</div>
+   <div class="said"><span class="lbl">What reviewers say</span>Warm retro vibe, inventive cocktails and staff who make celebrations feel special.</div>
    <div class="meta"><span>📍 100 Shoreditch High St, E1</span><span>🕒 Fri 5pm–2am</span></div>
    <div class="tags"><span class="tag">Friday</span></div>
    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Seed%20Library%20100%20Shoreditch%20High%20St%2C%20E1&query_place_id=ChIJK0w18ZgddkgRQYTOSLWTceY" target="_blank" rel="noopener">Open in Google Maps</a>
   </article></div></div><div class="dayblock" data-day="sat"><div class="section-label">Saturday</div><div class="grid"><article class="card">
    <div class="card-top"><div><h3>Pophams</h3><div class="kind">Bakery café · ££</div></div>
    <div class="rating"><span class="n">4.6</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">1,627 Google reviews</span></div></div>
+   
    <p>Neighbourhood bakery famous for laminated pastries, with benches outside.</p>
    <div class="said"><span class="lbl">What reviewers say</span>The maple bacon swirl is the hero and often sells out. Excellent cappuccinos. Expect a queue at peak times.</div>
    <div class="meta"><span>📍 19 Prebend St, N1</span><span>🕒 Sat 8am–4pm</span><span class="tip">→ Go early for the bacon maple swirl.</span></div>
@@ -251,6 +378,7 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
   </article><article class="card">
    <div class="card-top"><div><h3>Uchi Bake</h3><div class="kind">Japanese bakery · ££</div></div>
    <div class="rating"><span class="n">4.0</span> <span class="stars" aria-hidden="true">★★★★☆</span><span class="c">56 Google reviews</span></div></div>
+   
    <p>Japanese bakery for sandos on fluffy shokupan, hojicha and matcha.</p>
    <div class="said"><span class="lbl">What reviewers say</span>The tamago sando and strawberry sando get big love, as do the hojicha latte and cheesecake. Service can be slow on busy Saturdays.</div>
    <div class="meta"><span>📍 19 Camden Passage, N1</span><span>🕒 Sat 8am–6pm · closed Tue</span></div>
@@ -259,30 +387,34 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
   </article><article class="card">
    <div class="card-top"><div><h3>Katsute 100</h3><div class="kind">Japanese tea room · £</div></div>
    <div class="rating"><span class="n">4.4</span> <span class="stars" aria-hidden="true">★★★★☆</span><span class="c">1,223 Google reviews</span></div></div>
+   
    <p>Calm Japanese tea house with matcha, hojicha and genmaicha lattes, cakes and a big garden.</p>
-   <div class="said"><span class="lbl">What reviewers say</span>Called some of the most authentic matcha in London. The matcha mille crêpe, Mont Blanc and matcha basque cheesecake get repeat praise.</div>
+   <div class="said"><span class="lbl">What reviewers say</span>Called some of the most authentic matcha in London. The matcha mille crêpe and Mont Blanc get repeat praise.</div>
    <div class="meta"><span>📍 100 Islington High St, N1</span><span>🕒 Sat 10am–8pm</span><span class="tip">→ Grab a garden table if inside is full.</span></div>
    <div class="tags"><span class="tag">Saturday</span></div>
    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Katsute%20100%20100%20Islington%20High%20St%2C%20N1&query_place_id=ChIJPxGlPV0bdkgR18Fl-0PeIcc" target="_blank" rel="noopener">Open in Google Maps</a>
   </article><article class="card">
    <div class="card-top"><div><h3>Japanese Curry Bread (Kanazawa)</h3><div class="kind">Curry bread · takeaway · £</div></div>
    <div class="rating"><span class="n">4.9</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">69 Google reviews</span></div></div>
+   
    <p>Tiny Japanese-run kiosk making kare pan (crispy fried curry buns) and nama doughnuts.</p>
-   <div class="said"><span class="lbl">What reviewers say</span>Crispy outside, fluffy inside and properly authentic. The Earl Grey nama doughnut is a cult favourite. Small team, so there may be a short wait.</div>
+   <div class="said"><span class="lbl">What reviewers say</span>Crispy outside, fluffy inside and properly authentic. The Earl Grey nama doughnut is a cult favourite.</div>
    <div class="meta"><span>📍 34 Islington Green, N1</span><span>🕒 Sat 10am–4pm · closed Mon–Tue</span><span class="tip">→ Eat it on Islington Green next door.</span></div>
    <div class="tags"><span class="tag">Saturday</span></div>
    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Japanese%20Curry%20Bread%20(Kanazawa)%2034%20Islington%20Green%2C%20N1&query_place_id=ChIJ35QkAwAbdkgR8fq6QdYjzfE" target="_blank" rel="noopener">Open in Google Maps</a>
   </article><article class="card">
    <div class="card-top"><div><h3>Camden Passage</h3><div class="kind">Antiques market lane</div></div>
    <div class="rating"><span class="n">4.3</span> <span class="stars" aria-hidden="true">★★★★☆</span><span class="c">464 Google reviews</span></div></div>
+   
    <p>Pretty pedestrian lane of boutiques, cafés and antiques, with flea market stalls on Wednesdays and Saturdays.</p>
-   <div class="said"><span class="lbl">What reviewers say</span>Charming, independent and not touristy. Go reasonably early before it fills up. Some stallholders are cash only.</div>
+   <div class="said"><span class="lbl">What reviewers say</span>Charming, independent and not touristy. Some stallholders are cash only.</div>
    <div class="meta"><span>📍 Camden Passage, N1</span><span>🕒 Sat ~8am–6pm</span><span class="tip">→ Bring a bit of cash.</span></div>
    <div class="tags"><span class="tag">Saturday</span></div>
    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Camden%20Passage%20Camden%20Passage%2C%20N1&query_place_id=ChIJS2-WPs4EdkgRT5bUdYdl1Os" target="_blank" rel="noopener">Open in Google Maps</a>
   </article><article class="card">
    <div class="card-top"><div><h3>Anthropologie</h3><div class="kind">Clothing &amp; homeware</div></div>
    <div class="rating"><span class="n">4.3</span> <span class="stars" aria-hidden="true">★★★★☆</span><span class="c">23 Google reviews</span></div></div>
+   
    <p>The Islington branch of the US brand for clothes, home and gifts.</p>
    <div class="said"><span class="lbl">What reviewers say</span>Lots of praise for staff who style full outfits, almost like personal shopping.</div>
    <div class="meta"><span>📍 126–127 Upper St, N1</span><span>🕒 Sat 10am–6:30pm</span></div>
@@ -291,126 +423,151 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
   </article><article class="card">
    <div class="card-top"><div><h3>Homeboy</h3><div class="kind">Irish cocktail bar · ££</div></div>
    <div class="rating"><span class="n">4.6</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">835 Google reviews</span></div></div>
+   
    <p>Small Irish bar with excellent Guinness, cocktails and toasties.</p>
-   <div class="said"><span class="lbl">What reviewers say</span>Regulars call it their favourite bar in London. Friendly service, water kept topped up, great Bloody Mary and a laid-back early-evening feel.</div>
+   <div class="said"><span class="lbl">What reviewers say</span>Regulars call it their favourite bar in London. Friendly service, great Bloody Mary and a laid-back early-evening feel.</div>
    <div class="meta"><span>📍 108 Essex Rd, N1</span><span>🕒 Sat 12:30pm–1am</span></div>
    <div class="tags"><span class="tag">Saturday</span></div>
    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Homeboy%20108%20Essex%20Rd%2C%20N1&query_place_id=ChIJ4UBjIAobdkgR0ixhyjWiytw" target="_blank" rel="noopener">Open in Google Maps</a>
   </article><article class="card">
    <div class="card-top"><div><h3>Som Saa</h3><div class="kind">Thai restaurant · ££</div></div>
    <div class="rating"><span class="n">4.5</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">2,548 Google reviews</span></div></div>
+   <div class="pill booked">✓ Booked 8pm for 3</div>
    <p>Regional Thai cooking with real heat, back after a fire forced a long closure.</p>
-   <div class="said"><span class="lbl">What reviewers say</span>Authentic and well spiced. The deep-fried whole sea bass is a must, along with the jungle curry, stir-fried greens and fermented pork. Great cocktails too.</div>
-   <div class="meta"><span>📍 43A Commercial St, E1</span><span>🕒 Sat 12pm–11:30pm</span><span class="tip">→ Book ahead. It's in Spitalfields, not Islington.</span></div>
+   <div class="said"><span class="lbl">What reviewers say</span>Authentic and well spiced. The deep-fried whole sea bass is a must, along with the jungle curry and fermented pork.</div>
+   <div class="meta"><span>📍 43A Commercial St, E1</span><span>🕒 Sat 12pm–11:30pm</span><span class="tip">→ It's in Spitalfields, about 25–30 min from Homeboy.</span></div>
    <div class="tags"><span class="tag">Saturday</span></div>
    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Som%20Saa%2043A%20Commercial%20St%2C%20E1&query_place_id=ChIJobyn_rQcdkgRE042NxgeR1k" target="_blank" rel="noopener">Open in Google Maps</a>
   </article><article class="card">
    <div class="card-top"><div><h3>Blues Kitchen Shoreditch</h3><div class="kind">Live music bar · ££</div></div>
    <div class="rating"><span class="n">4.4</span> <span class="stars" aria-hidden="true">★★★★☆</span><span class="c">8,817 Google reviews</span></div></div>
+   
    <p>Big American-style bar with live blues, soul and funk bands, then DJs late.</p>
-   <div class="said"><span class="lbl">What reviewers say</span>Always a vibe with a great live band and dance floor. Live music usually from about 9pm. Book ahead at weekends.</div>
+   <div class="said"><span class="lbl">What reviewers say</span>Always a vibe with a great live band and dance floor. Live music usually from about 9pm.</div>
    <div class="meta"><span>📍 134–146 Curtain Rd, EC2</span><span>🕒 Sat 11am–3am</span><span class="tip">→ Check the website for who's playing.</span></div>
    <div class="tags"><span class="tag">Saturday</span></div>
    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Blues%20Kitchen%20Shoreditch%20134%E2%80%93146%20Curtain%20Rd%2C%20EC2&query_place_id=ChIJv16nk7ocdkgR5P9wUhZgUpU" target="_blank" rel="noopener">Open in Google Maps</a>
   </article></div></div><div class="dayblock" data-day="sun"><div class="section-label">Sunday</div><div class="grid"><article class="card">
-   <div class="card-top"><div><h3>House of MinaLima</h3><div class="kind">Harry Potter design gallery</div></div>
-   <div class="rating"><span class="n">4.8</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">4,169 Google reviews</span></div></div>
-   <p>Free gallery and shop from the graphic designers behind the Harry Potter films' props: the Daily Prophet, Marauder's Map and more.</p>
-   <div class="said"><span class="lbl">What reviewers say</span>Magical and beautifully detailed, run by devoted fans. Prints and special editions are pricey but unique. Small, so there may be a queue.</div>
-   <div class="meta"><span>📍 157 Wardour St, Soho</span><span>🕒 Sun 11am–6:45pm</span><span class="tip">→ Best Harry Potter stop for Rose, a short walk from Blacklock.</span></div>
-   <div class="tags"><span class="tag">Sunday · Option A</span></div>
-   <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=House%20of%20MinaLima%20157%20Wardour%20St%2C%20Soho&query_place_id=ChIJQaaYltIEdkgRzIZcPrfiNjI" target="_blank" rel="noopener">Open in Google Maps</a>
-  </article><article class="card">
-   <div class="card-top"><div><h3>Harry Potter Shop, Platform 9¾</h3><div class="kind">Harry Potter shop</div></div>
-   <div class="rating"><span class="n">4.3</span> <span class="stars" aria-hidden="true">★★★★☆</span><span class="c">34,985 Google reviews</span></div></div>
-   <p>The official shop next to the trolley-in-the-wall photo spot.</p>
-   <div class="said"><span class="lbl">What reviewers say</span>A paradise for fans with wands, scarves and Chocolate Frogs. Smaller than expected and the photo queue can be long.</div>
-   <div class="meta"><span>📍 King's Cross Station, N1</span><span>🕒 Sun 9am–8pm</span><span class="tip">→ Two stops from Highbury on the Victoria line.</span></div>
-   <div class="tags"><span class="tag">Sunday · Option A</span></div>
-   <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Harry%20Potter%20Shop%2C%20Platform%209%C2%BE%20King's%20Cross%20Station%2C%20N1&query_place_id=ChIJJe7ZEDwbdkgRCHZ9Qztth8w" target="_blank" rel="noopener">Open in Google Maps</a>
-  </article><article class="card">
-   <div class="card-top"><div><h3>Seven Dials</h3><div class="kind">Shopping area</div></div>
-   </div>
-   <p>Seven streets of indie and lifestyle shops radiating from a sundial pillar, plus Neal's Yard.</p>
-   
-   <div class="meta"><span>📍 Covent Garden, WC2</span><span>🕒 Shops ~11am–6pm Sun</span></div>
-   <div class="tags"><span class="tag">Sunday · Option A</span></div>
-   <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Seven%20Dials%20Covent%20Garden%2C%20WC2&query_place_id=ChIJsdHNPM0EdkgReg34D46tWPo" target="_blank" rel="noopener">Open in Google Maps</a>
-  </article><article class="card">
-   <div class="card-top"><div><h3>Carnaby Street</h3><div class="kind">Shopping street</div></div>
-   <div class="rating"><span class="n">4.6</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">3,089 Google reviews</span></div></div>
-   <p>Pedestrian street of fashion and beauty shops, with Kingly Court for food.</p>
-   <div class="said"><span class="lbl">What reviewers say</span>Lively with great shopping. Busy at weekends, and the Christmas lights may be up.</div>
-   <div class="meta"><span>📍 Soho, W1</span><span>🕒 Shops ~12pm–6pm Sun</span></div>
-   <div class="tags"><span class="tag">Sunday · Option A</span></div>
-   <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Carnaby%20Street%20Soho%2C%20W1&query_place_id=ChIJhYw3EdUEdkgRYaGKThvmX9o" target="_blank" rel="noopener">Open in Google Maps</a>
-  </article><article class="card">
-   <div class="card-top"><div><h3>Blacklock Soho</h3><div class="kind">Chophouse · roast · ££</div></div>
-   <div class="rating"><span class="n">4.7</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">5,336 Google reviews</span></div></div>
-   <p>Basement chophouse famous for its all-in Sunday roast piled on grilled flatbread.</p>
-   <div class="said"><span class="lbl">What reviewers say</span>Perfectly charred meat, generous portions and a white chocolate cheesecake people call one of the best ever. Very hard to walk in.</div>
-   <div class="meta"><span>📍 24 Great Windmill St, W1</span><span>🕒 Sun 11:45am–8pm</span><span class="tip">→ Book now.</span></div>
-   <div class="tags"><span class="tag">Sunday · Option A</span></div>
-   <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Blacklock%20Soho%2024%20Great%20Windmill%20St%2C%20W1&query_place_id=ChIJOTAQhtMEdkgR9ZmC_mZR0UM" target="_blank" rel="noopener">Open in Google Maps</a>
-  </article><article class="card">
    <div class="card-top"><div><h3>Marylebone Farmers' Market</h3><div class="kind">Farmers' market</div></div>
    <div class="rating"><span class="n">4.6</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">388 Google reviews</span></div></div>
+   
    <p>One of London's best Sunday farmers' markets: produce, bakes, hot food, flowers.</p>
    <div class="said"><span class="lbl">What reviewers say</span>Fantastic variety and cheerful traders, with doughnuts and pastries to graze on. Busier later in the day.</div>
-   <div class="meta"><span>📍 St Vincent St, W1</span><span>🕒 Sun only, 10am–2pm</span><span class="tip">→ Ends at 2pm, so don't start too slowly.</span></div>
-   <div class="tags"><span class="tag">Sunday · Option B</span></div>
+   <div class="meta"><span>📍 St Vincent St, W1</span><span>🕒 Sun only, 10am–2pm</span><span class="tip">→ Ends at 2pm, so arrive by 12:30.</span></div>
+   <div class="tags"><span class="tag">Sunday</span></div>
    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Marylebone%20Farmers'%20Market%20St%20Vincent%20St%2C%20W1&query_place_id=ChIJecuoDtIadkgRR_GbSwzzU8o" target="_blank" rel="noopener">Open in Google Maps</a>
-  </article><article class="card">
-   <div class="card-top"><div><h3>Marylebone High Street</h3><div class="kind">Village high street</div></div>
-   </div>
-   <p>Elegant village-feel street of indie shops, Daunt Books' Edwardian bookshop and cafés.</p>
-   
-   <div class="meta"><span>📍 Marylebone, W1</span><span>🕒 Shops ~11am–5pm Sun</span></div>
-   <div class="tags"><span class="tag">Sunday · Option B</span></div>
-   <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Marylebone%20High%20Street%20Marylebone%2C%20W1&query_place_id=ChIJ8fPDaNIadkgRLjwLg3Njj9g" target="_blank" rel="noopener">Open in Google Maps</a>
   </article><article class="card">
    <div class="card-top"><div><h3>Arôme Bakery</h3><div class="kind">Bakery · ££</div></div>
    <div class="rating"><span class="n">4.5</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">1,322 Google reviews</span></div></div>
+   
    <p>French-Asian bakery known for its honey butter toast.</p>
    <div class="said"><span class="lbl">What reviewers say</span>The honey butter toast lives up to the hype and the almond croissant is superb. Expect a queue.</div>
-   <div class="meta"><span>📍 27 Duke St, W1</span><span>🕒 Sun 9am–4pm</span><span class="tip">→ Get the honey butter toast.</span></div>
-   <div class="tags"><span class="tag">Sunday · Option B</span></div>
+   <div class="meta"><span>📍 27 Duke St, W1</span><span>🕒 Sun 9am–4pm · closed Mon</span><span class="tip">→ Get the honey butter toast.</span></div>
+   <div class="tags"><span class="tag">Sunday</span></div>
    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Ar%C3%B4me%20Bakery%2027%20Duke%20St%2C%20W1&query_place_id=ChIJXaGQmXAbdkgROIIGIxd7wo8" target="_blank" rel="noopener">Open in Google Maps</a>
   </article><article class="card">
-   <div class="card-top"><div><h3>The Coach Makers Arms</h3><div class="kind">Pub · roast · ££</div></div>
-   <div class="rating"><span class="n">4.3</span> <span class="stars" aria-hidden="true">★★★★☆</span><span class="c">1,314 Google reviews</span></div></div>
-   <p>Classic pub downstairs with a calmer dining room upstairs.</p>
-   <div class="said"><span class="lbl">What reviewers say</span>One diner called it the best roast in ages. Sticky toffee pudding and pies are favourites, and service is quick.</div>
-   <div class="meta"><span>📍 88 Marylebone Ln, W1</span><span>🕒 Sun 12pm–10pm</span><span class="tip">→ Book the upstairs dining room.</span></div>
-   <div class="tags"><span class="tag">Sunday · Option B</span></div>
-   <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=The%20Coach%20Makers%20Arms%2088%20Marylebone%20Ln%2C%20W1&query_place_id=ChIJazv69tIadkgRIshflhWehZY" target="_blank" rel="noopener">Open in Google Maps</a>
+   <div class="card-top"><div><h3>WatchHouse Marylebone</h3><div class="kind">Specialty coffee · ££</div></div>
+   <div class="rating"><span class="n">4.6</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">2,120 Google reviews</span></div></div>
+   
+   <p>Bright two-floor specialty coffee shop with pastries and brunch.</p>
+   <div class="said"><span class="lbl">What reviewers say</span>Consistently great coffee and pastries, with the banana cake a favourite. A calmer seating area downstairs.</div>
+   <div class="meta"><span>📍 32–34 New Cavendish St, W1</span><span>🕒 Sun 9am–6pm</span></div>
+   <div class="tags"><span class="tag">Sunday</span></div>
+   <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=WatchHouse%20Marylebone%2032%E2%80%9334%20New%20Cavendish%20St%2C%20W1&query_place_id=ChIJD1xcEigbdkgR_rS0GDp6t9M" target="_blank" rel="noopener">Open in Google Maps</a>
   </article><article class="card">
-   <div class="card-top"><div><h3>La Crêperie de Hampstead</h3><div class="kind">Crêpe stand</div></div>
-   <div class="rating"><span class="n">4.3</span> <span class="stars" aria-hidden="true">★★★★☆</span><span class="c">2,382 Google reviews</span></div></div>
-   <p>A Hampstead institution since 1977, making sweet and savoury crêpes from a little stall.</p>
-   <div class="said"><span class="lbl">What reviewers say</span>A must-do tradition for many locals and worth the queue. A few say quality can vary.</div>
-   <div class="meta"><span>📍 77a Hampstead High St, NW3</span><span>🕒 Sun 12pm–11:30pm</span><span class="tip">→ Try ham, cheese and egg, then a sweet one.</span></div>
-   <div class="tags"><span class="tag">Sunday · Option C</span></div>
-   <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=La%20Cr%C3%AAperie%20de%20Hampstead%2077a%20Hampstead%20High%20St%2C%20NW3&query_place_id=ChIJK7xz4IcadkgRVnC_XCg2aRE" target="_blank" rel="noopener">Open in Google Maps</a>
+   <div class="card-top"><div><h3>The Monocle Café</h3><div class="kind">Café · £</div></div>
+   <div class="rating"><span class="n">4.4</span> <span class="stars" aria-hidden="true">★★★★☆</span><span class="c">2,187 Google reviews</span></div></div>
+   
+   <p>Tiny café from Monocle magazine with a cosy, dim downstairs.</p>
+   <div class="said"><span class="lbl">What reviewers say</span>Great matcha and iced chai, and a relaxed spot to read. It gets packed and drinks can be slow.</div>
+   <div class="meta"><span>📍 18 Chiltern St, W1</span><span>🕒 Sun 8am–8pm</span><span class="tip">→ Grab a table downstairs if you can.</span></div>
+   <div class="tags"><span class="tag">Sunday</span></div>
+   <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=The%20Monocle%20Caf%C3%A9%2018%20Chiltern%20St%2C%20W1&query_place_id=ChIJjSKnuM0adkgRA725Gi-2JFk" target="_blank" rel="noopener">Open in Google Maps</a>
   </article><article class="card">
-   <div class="card-top"><div><h3>Parliament Hill, Hampstead Heath</h3><div class="kind">Viewpoint · park</div></div>
-   <div class="rating"><span class="n">4.7</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">5,230 Google reviews</span></div></div>
-   <p>Wild heath with London's best free skyline view from Parliament Hill.</p>
-   <div class="said"><span class="lbl">What reviewers say</span>The walk across the heath is half the joy. It feels a world away from the city.</div>
-   <div class="meta"><span>📍 Hampstead Heath, NW5</span><span>🕒 Open 24 hours</span><span class="tip">→ Sunset is around 4:20pm.</span></div>
-   <div class="tags"><span class="tag">Sunday · Option C</span></div>
-   <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Parliament%20Hill%2C%20Hampstead%20Heath%20Hampstead%20Heath%2C%20NW5&query_place_id=ChIJ_4LX7l4adkgRSNxuMRF6HF0" target="_blank" rel="noopener">Open in Google Maps</a>
+   <div class="card-top"><div><h3>Koibird</h3><div class="kind">Concept store</div></div>
+   <div class="rating"><span class="n">3.9</span> <span class="stars" aria-hidden="true">★★★★☆</span><span class="c">44 Google reviews</span></div></div>
+   
+   <p>Concept store with rotating themes, known for Korean skincare, hair accessories and pyjamas.</p>
+   <div class="said"><span class="lbl">What reviewers say</span>Great curation and very friendly staff. One reviewer had a bad experience at the in-store snack bar.</div>
+   <div class="meta"><span>📍 62 Marylebone Ln, W1</span><span>🕒 Sun 11am–5pm</span></div>
+   <div class="tags"><span class="tag">Sunday</span></div>
+   <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Koibird%2062%20Marylebone%20Ln%2C%20W1&query_place_id=ChIJmUyaVs4adkgRm-fH-cxkids" target="_blank" rel="noopener">Open in Google Maps</a>
   </article><article class="card">
-   <div class="card-top"><div><h3>The Holly Bush</h3><div class="kind">Historic pub · roast · ££</div></div>
-   <div class="rating"><span class="n">4.4</span> <span class="stars" aria-hidden="true">★★★★☆</span><span class="c">2,575 Google reviews</span></div></div>
-   <p>A cosy 18th-century pub tucked up a hill in Hampstead village, with fires and wood panelling.</p>
-   <div class="said"><span class="lbl">What reviewers say</span>Excellent roasts, quick friendly service and great desserts, especially the sticky toffee pudding.</div>
-   <div class="meta"><span>📍 22 Holly Mount, NW3</span><span>🕒 Sun 12pm–10:30pm</span><span class="tip">→ Book a table for the roast.</span></div>
-   <div class="tags"><span class="tag">Sunday · Option C</span></div>
-   <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=The%20Holly%20Bush%2022%20Holly%20Mount%2C%20NW3&query_place_id=ChIJLUnmeX0adkgRXNl19ShDnog" target="_blank" rel="noopener">Open in Google Maps</a>
+   <div class="card-top"><div><h3>Daunt Books</h3><div class="kind">Bookshop</div></div>
+   <div class="rating"><span class="n">4.8</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">7,293 Google reviews</span></div></div>
+   
+   <p>Edwardian bookshop with oak galleries and a skylit back room, with books arranged by country.</p>
+   <div class="said"><span class="lbl">What reviewers say</span>Reviewers call it one of the most beautiful bookshops in the world, and many leave with an armful plus a tote bag.</div>
+   <div class="meta"><span>📍 84 Marylebone High St, W1</span><span>🕒 Sun 11am–6pm</span><span class="tip">→ Pick up the classic Daunt tote.</span></div>
+   <div class="tags"><span class="tag">Sunday</span></div>
+   <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Daunt%20Books%2084%20Marylebone%20High%20St%2C%20W1&query_place_id=ChIJTQJH99EadkgRgli4gpxCkOY" target="_blank" rel="noopener">Open in Google Maps</a>
+  </article><article class="card">
+   <div class="card-top"><div><h3>Mejuri</h3><div class="kind">Jewellery</div></div>
+   <div class="rating"><span class="n">4.0</span> <span class="stars" aria-hidden="true">★★★★☆</span><span class="c">102 Google reviews</span></div></div>
+   
+   <p>Everyday fine jewellery and stacking rings, plus ear piercing.</p>
+   <div class="said"><span class="lbl">What reviewers say</span>Several shoppers praise patient, helpful staff and the piercing service. A couple of recent reviews describe poor service.</div>
+   <div class="meta"><span>📍 96 Marylebone High St, W1</span><span>🕒 Sun 11am–6pm</span></div>
+   <div class="tags"><span class="tag">Sunday</span></div>
+   <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Mejuri%2096%20Marylebone%20High%20St%2C%20W1&query_place_id=ChIJQwolcYwbdkgR4NBhJGCVvnI" target="_blank" rel="noopener">Open in Google Maps</a>
+  </article><article class="card">
+   <div class="card-top"><div><h3>Wyse</h3><div class="kind">Knitwear &amp; clothing</div></div>
+   <div class="rating"><span class="n">4.1</span> <span class="stars" aria-hidden="true">★★★★☆</span><span class="c">19 Google reviews</span></div></div>
+   
+   <p>Cheerful cashmere knitwear, from striped jumpers to sequinned pieces.</p>
+   <div class="said"><span class="lbl">What reviewers say</span>Shoppers love the styling help in store. Some find quality and returns disappointing for the price.</div>
+   <div class="meta"><span>📍 95 Marylebone High St, W1</span><span>🕒 Sun 11am–5pm</span></div>
+   <div class="tags"><span class="tag">Sunday</span></div>
+   <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Wyse%2095%20Marylebone%20High%20St%2C%20W1&query_place_id=ChIJa8ziOO8bdkgRPrYF4cc9FiM" target="_blank" rel="noopener">Open in Google Maps</a>
+  </article><article class="card">
+   <div class="card-top"><div><h3>Luca Faloni</h3><div class="kind">Cashmere &amp; linen</div></div>
+   <div class="rating"><span class="n">4.6</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">98 Google reviews</span></div></div>
+   
+   <p>Italian-made cashmere, linen shirts and knitwear.</p>
+   <div class="said"><span class="lbl">What reviewers say</span>Beautiful cut and quality for many. A few reviews mention aloof staff and issues after washing.</div>
+   <div class="meta"><span>📍 107–108 Marylebone High St, W1</span><span>🕒 Sun 11am–6pm</span></div>
+   <div class="tags"><span class="tag">Sunday</span></div>
+   <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Luca%20Faloni%20107%E2%80%93108%20Marylebone%20High%20St%2C%20W1&query_place_id=ChIJOR9c6OMbdkgRtf8RryySP5Y" target="_blank" rel="noopener">Open in Google Maps</a>
+  </article><article class="card">
+   <div class="card-top"><div><h3>Rococo Chocolates</h3><div class="kind">Chocolatier</div></div>
+   <div class="rating"><span class="n">4.3</span> <span class="stars" aria-hidden="true">★★★★☆</span><span class="c">114 Google reviews</span></div></div>
+   
+   <p>Handmade truffles and flavoured bars from a much-loved British chocolatier.</p>
+   <div class="said"><span class="lbl">What reviewers say</span>You can taste before you buy, and fans swear by flavours like Earl Grey and Big Smoke.</div>
+   <div class="meta"><span>📍 3 Moxon St, W1</span><span>🕒 Sun 10am–5pm</span><span class="tip">→ A good gift to take home.</span></div>
+   <div class="tags"><span class="tag">Sunday</span></div>
+   <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Rococo%20Chocolates%203%20Moxon%20St%2C%20W1&query_place_id=ChIJbeTB6dEadkgR_efm_gex2G8" target="_blank" rel="noopener">Open in Google Maps</a>
+  </article><article class="card">
+   <div class="card-top"><div><h3>Cire Trudon</h3><div class="kind">Candles &amp; fragrance</div></div>
+   <div class="rating"><span class="n">4.9</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">16 Google reviews</span></div></div>
+   
+   <p>Boutique of the world's oldest candle maker, with chandeliers, mirrors and the full scent range.</p>
+   <div class="said"><span class="lbl">What reviewers say</span>A small, beautiful shop with knowledgeable staff who share the history behind each scent.</div>
+   <div class="meta"><span>📍 36 Chiltern St, W1</span><span>🕒 Check Sunday hours</span></div>
+   <div class="tags"><span class="tag">Sunday</span></div>
+   <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Cire%20Trudon%2036%20Chiltern%20St%2C%20W1&query_place_id=ChIJHx5vxs0adkgRfGkkkhUPelI" target="_blank" rel="noopener">Open in Google Maps</a>
+  </article><article class="card">
+   <div class="card-top"><div><h3>Sophie Hulme</h3><div class="kind">Leather bags</div></div>
+   <div class="rating"><span class="n">5.0</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">4 Google reviews</span></div></div>
+   
+   <p>Leather handbags in a range of colours, with in-store personalisation.</p>
+   
+   <div class="meta"><span>📍 38 Chiltern St, W1</span><span>🕒 Check Sunday hours</span></div>
+   <div class="tags"><span class="tag">Sunday</span></div>
+   <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Sophie%20Hulme%2038%20Chiltern%20St%2C%20W1&query_place_id=ChIJx09wGDkbdkgRtQ4Jtqhsqw4" target="_blank" rel="noopener">Open in Google Maps</a>
+  </article><article class="card">
+   <div class="card-top"><div><h3>The Drapers Arms</h3><div class="kind">Gastropub · roast · ££</div></div>
+   <div class="rating"><span class="n">4.2</span> <span class="stars" aria-hidden="true">★★★★☆</span><span class="c">1,305 Google reviews</span></div></div>
+   <div class="pill booked">✓ Booked 7pm for 4</div>
+   <p>Georgian Islington pub with serious cooking. The Infatuation rates it 8.1, alongside The Baring.</p>
+   <div class="said"><span class="lbl">What reviewers say</span>Google reviewers rave about the beef pie, steak and wine list, and call the upstairs room buzzy but not loud. Service can be slow.</div>
+   <div class="meta"><span>📍 44 Barnsbury St, N1</span><span>🕒 Sun 12pm–10:30pm</span><span class="tip">→ Share the côte de boeuf.</span></div>
+   <div class="tags"><span class="tag">Sunday</span></div>
+   <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=The%20Drapers%20Arms%2044%20Barnsbury%20St%2C%20N1&query_place_id=ChIJfeov2mgbdkgRlsuCvg281hU" target="_blank" rel="noopener">Open in Google Maps</a>
   </article></div></div><div class="dayblock" data-day="mon"><div class="section-label">Monday</div><div class="grid"><article class="card">
    <div class="card-top"><div><h3>Vertige Café</h3><div class="kind">Café · breakfast · ££</div></div>
    <div class="rating"><span class="n">4.6</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">381 Google reviews</span></div></div>
+   
    <p>Neighbourhood café with strong coffee, brunch plates and pastries.</p>
    <div class="said"><span class="lbl">What reviewers say</span>First-rate coffee and lovely staff. The omelette, corn fritters and orange almond cake all get shout-outs.</div>
    <div class="meta"><span>📍 154 Canonbury Rd, N1</span><span>🕒 Mon 7am–4pm</span></div>
@@ -419,39 +576,35 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
   </article><article class="card">
    <div class="card-top"><div><h3>La Maison Highbury</h3><div class="kind">Café · £</div></div>
    <div class="rating"><span class="n">4.6</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">143 Google reviews</span></div></div>
+   
    <p>Sweet local coffee shop near Highbury Fields with toasties, salads and matcha.</p>
    <div class="said"><span class="lbl">What reviewers say</span>A favourite with locals for coffee, matcha and almond croissants. Quiet on weekday mornings.</div>
    <div class="meta"><span>📍 19 Calabria Rd, N5</span><span>🕒 Mon 8am–5pm</span></div>
    <div class="tags"><span class="tag">Monday</span></div>
    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=La%20Maison%20Highbury%2019%20Calabria%20Rd%2C%20N5&query_place_id=ChIJ07nLqpUbdkgR9uwdkhrLrDs" target="_blank" rel="noopener">Open in Google Maps</a>
-  </article><article class="card">
-   <div class="card-top"><div><h3>Urban Café &amp; Bistro</h3><div class="kind">Café-bistro · ££</div></div>
-   <div class="rating"><span class="n">4.9</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">1,308 Google reviews</span></div></div>
-   <p>Cosy bistro by Highbury Corner doing breakfast through dinner.</p>
-   <div class="said"><span class="lbl">What reviewers say</span>Very warm owner and staff. Pasta and lamb shank get praise; one breakfast review was disappointed with value.</div>
-   <div class="meta"><span>📍 103 St Paul's Rd, N1</span><span>🕒 Mon 9am–10pm</span><span class="tip">→ Opens 9am Monday, so only if you're not rushing.</span></div>
-   <div class="tags"><span class="tag">Monday</span></div>
-   <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Urban%20Caf%C3%A9%20%26%20Bistro%20103%20St%20Paul's%20Rd%2C%20N1&query_place_id=ChIJYbK92kUbdkgRFSoAR3W13EM" target="_blank" rel="noopener">Open in Google Maps</a>
   </article></div></div></section>
-  <section class="panel" id="p-coffee" role="tabpanel" aria-labelledby="t-coffee"><h2>Coffee & sweet</h2><p class="sub">Cafés, bakeries and treats across the weekend.</p><div class="section-label">Shoreditch & Spitalfields</div><div class="grid"><article class="card">
+  <section class="panel" id="p-coffee" role="tabpanel" aria-labelledby="t-coffee"><h2>Coffee &amp; sweet</h2><p class="sub">Cafés, bakeries and treats across the weekend.</p><div class="section-label">Shoreditch &amp; Spitalfields</div><div class="grid"><article class="card">
    <div class="card-top"><div><h3>Townhouse</h3><div class="kind">Café · gallery shop</div></div>
    <div class="rating"><span class="n">4.5</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">182 Google reviews</span></div></div>
+   
    <p>A gallery of ceramics, antiques and books in an 18th-century house, with a tiny café in the old basement kitchen and a glass-roofed courtyard.</p>
    <div class="said"><span class="lbl">What reviewers say</span>People call it a hidden gem that feels like sitting in someone's period kitchen. The cardamom cake and lattes get repeat praise, and many first-timers nearly miss the café downstairs.</div>
-   <div class="meta"><span>📍 5 Fournier St, E1</span><span>🕒 Café Fri until ~5pm · gallery 11am–6pm · closed Mon</span><span class="tip">→ Head straight downstairs for the café, and aim to arrive by 4. It winds down before the gallery closes.</span></div>
+   <div class="meta"><span>📍 5 Fournier St, E1</span><span>🕒 Café Fri until ~5pm · gallery 11am–6pm · closed Mon</span><span class="tip">→ Head straight downstairs for the café, and aim to arrive by 4.</span></div>
    <div class="tags"><span class="tag">Friday</span></div>
    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Townhouse%205%20Fournier%20St%2C%20E1&query_place_id=ChIJ60sgzLUcdkgR3Jwsb2Ry1Rw" target="_blank" rel="noopener">Open in Google Maps</a>
   </article><article class="card">
    <div class="card-top"><div><h3>Goodhood</h3><div class="kind">Concept store + café</div></div>
    <div class="rating"><span class="n">3.8</span> <span class="stars" aria-hidden="true">★★★★☆</span><span class="c">657 Google reviews</span></div></div>
+   
    <p>A large, cool concept store for fashion, beauty and homeware, with its own café, Commune.</p>
    <div class="said"><span class="lbl">What reviewers say</span>Fans love the curation and the space. The café gets real praise for lattes and baked goods. Some service complaints.</div>
    <div class="meta"><span>📍 15 Hanbury St, E1</span><span>🕒 Fri 11am–7pm</span></div>
    <div class="tags"><span class="tag">Friday</span></div>
    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Goodhood%2015%20Hanbury%20St%2C%20E1&query_place_id=ChIJjxMiM6UcdkgRVGQV8EJF5ek" target="_blank" rel="noopener">Open in Google Maps</a>
-  </article></div><div class="section-label">Islington & Camden Passage</div><div class="grid"><article class="card">
+  </article></div><div class="section-label">Islington &amp; Camden Passage</div><div class="grid"><article class="card">
    <div class="card-top"><div><h3>Pophams</h3><div class="kind">Bakery café · ££</div></div>
    <div class="rating"><span class="n">4.6</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">1,627 Google reviews</span></div></div>
+   
    <p>Neighbourhood bakery famous for laminated pastries, with benches outside.</p>
    <div class="said"><span class="lbl">What reviewers say</span>The maple bacon swirl is the hero and often sells out. Excellent cappuccinos. Expect a queue at peak times.</div>
    <div class="meta"><span>📍 19 Prebend St, N1</span><span>🕒 Sat 8am–4pm</span><span class="tip">→ Go early for the bacon maple swirl.</span></div>
@@ -460,6 +613,7 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
   </article><article class="card">
    <div class="card-top"><div><h3>Uchi Bake</h3><div class="kind">Japanese bakery · ££</div></div>
    <div class="rating"><span class="n">4.0</span> <span class="stars" aria-hidden="true">★★★★☆</span><span class="c">56 Google reviews</span></div></div>
+   
    <p>Japanese bakery for sandos on fluffy shokupan, hojicha and matcha.</p>
    <div class="said"><span class="lbl">What reviewers say</span>The tamago sando and strawberry sando get big love, as do the hojicha latte and cheesecake. Service can be slow on busy Saturdays.</div>
    <div class="meta"><span>📍 19 Camden Passage, N1</span><span>🕒 Sat 8am–6pm · closed Tue</span></div>
@@ -468,38 +622,61 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
   </article><article class="card">
    <div class="card-top"><div><h3>Katsute 100</h3><div class="kind">Japanese tea room · £</div></div>
    <div class="rating"><span class="n">4.4</span> <span class="stars" aria-hidden="true">★★★★☆</span><span class="c">1,223 Google reviews</span></div></div>
+   
    <p>Calm Japanese tea house with matcha, hojicha and genmaicha lattes, cakes and a big garden.</p>
-   <div class="said"><span class="lbl">What reviewers say</span>Called some of the most authentic matcha in London. The matcha mille crêpe, Mont Blanc and matcha basque cheesecake get repeat praise.</div>
+   <div class="said"><span class="lbl">What reviewers say</span>Called some of the most authentic matcha in London. The matcha mille crêpe and Mont Blanc get repeat praise.</div>
    <div class="meta"><span>📍 100 Islington High St, N1</span><span>🕒 Sat 10am–8pm</span><span class="tip">→ Grab a garden table if inside is full.</span></div>
    <div class="tags"><span class="tag">Saturday</span></div>
    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Katsute%20100%20100%20Islington%20High%20St%2C%20N1&query_place_id=ChIJPxGlPV0bdkgR18Fl-0PeIcc" target="_blank" rel="noopener">Open in Google Maps</a>
   </article><article class="card">
    <div class="card-top"><div><h3>Japanese Curry Bread (Kanazawa)</h3><div class="kind">Curry bread · takeaway · £</div></div>
    <div class="rating"><span class="n">4.9</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">69 Google reviews</span></div></div>
+   
    <p>Tiny Japanese-run kiosk making kare pan (crispy fried curry buns) and nama doughnuts.</p>
-   <div class="said"><span class="lbl">What reviewers say</span>Crispy outside, fluffy inside and properly authentic. The Earl Grey nama doughnut is a cult favourite. Small team, so there may be a short wait.</div>
+   <div class="said"><span class="lbl">What reviewers say</span>Crispy outside, fluffy inside and properly authentic. The Earl Grey nama doughnut is a cult favourite.</div>
    <div class="meta"><span>📍 34 Islington Green, N1</span><span>🕒 Sat 10am–4pm · closed Mon–Tue</span><span class="tip">→ Eat it on Islington Green next door.</span></div>
    <div class="tags"><span class="tag">Saturday</span></div>
    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Japanese%20Curry%20Bread%20(Kanazawa)%2034%20Islington%20Green%2C%20N1&query_place_id=ChIJ35QkAwAbdkgR8fq6QdYjzfE" target="_blank" rel="noopener">Open in Google Maps</a>
-  </article></div><div class="section-label">Sunday outings</div><div class="grid"><article class="card">
+  </article></div><div class="section-label">Marylebone</div><div class="grid"><article class="card">
    <div class="card-top"><div><h3>Arôme Bakery</h3><div class="kind">Bakery · ££</div></div>
    <div class="rating"><span class="n">4.5</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">1,322 Google reviews</span></div></div>
+   
    <p>French-Asian bakery known for its honey butter toast.</p>
    <div class="said"><span class="lbl">What reviewers say</span>The honey butter toast lives up to the hype and the almond croissant is superb. Expect a queue.</div>
-   <div class="meta"><span>📍 27 Duke St, W1</span><span>🕒 Sun 9am–4pm</span><span class="tip">→ Get the honey butter toast.</span></div>
-   <div class="tags"><span class="tag">Sunday · Option B</span></div>
+   <div class="meta"><span>📍 27 Duke St, W1</span><span>🕒 Sun 9am–4pm · closed Mon</span><span class="tip">→ Get the honey butter toast.</span></div>
+   <div class="tags"><span class="tag">Sunday</span></div>
    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Ar%C3%B4me%20Bakery%2027%20Duke%20St%2C%20W1&query_place_id=ChIJXaGQmXAbdkgROIIGIxd7wo8" target="_blank" rel="noopener">Open in Google Maps</a>
   </article><article class="card">
-   <div class="card-top"><div><h3>La Crêperie de Hampstead</h3><div class="kind">Crêpe stand</div></div>
-   <div class="rating"><span class="n">4.3</span> <span class="stars" aria-hidden="true">★★★★☆</span><span class="c">2,382 Google reviews</span></div></div>
-   <p>A Hampstead institution since 1977, making sweet and savoury crêpes from a little stall.</p>
-   <div class="said"><span class="lbl">What reviewers say</span>A must-do tradition for many locals and worth the queue. A few say quality can vary.</div>
-   <div class="meta"><span>📍 77a Hampstead High St, NW3</span><span>🕒 Sun 12pm–11:30pm</span><span class="tip">→ Try ham, cheese and egg, then a sweet one.</span></div>
-   <div class="tags"><span class="tag">Sunday · Option C</span></div>
-   <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=La%20Cr%C3%AAperie%20de%20Hampstead%2077a%20Hampstead%20High%20St%2C%20NW3&query_place_id=ChIJK7xz4IcadkgRVnC_XCg2aRE" target="_blank" rel="noopener">Open in Google Maps</a>
+   <div class="card-top"><div><h3>WatchHouse Marylebone</h3><div class="kind">Specialty coffee · ££</div></div>
+   <div class="rating"><span class="n">4.6</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">2,120 Google reviews</span></div></div>
+   
+   <p>Bright two-floor specialty coffee shop with pastries and brunch.</p>
+   <div class="said"><span class="lbl">What reviewers say</span>Consistently great coffee and pastries, with the banana cake a favourite. A calmer seating area downstairs.</div>
+   <div class="meta"><span>📍 32–34 New Cavendish St, W1</span><span>🕒 Sun 9am–6pm</span></div>
+   <div class="tags"><span class="tag">Sunday</span></div>
+   <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=WatchHouse%20Marylebone%2032%E2%80%9334%20New%20Cavendish%20St%2C%20W1&query_place_id=ChIJD1xcEigbdkgR_rS0GDp6t9M" target="_blank" rel="noopener">Open in Google Maps</a>
+  </article><article class="card">
+   <div class="card-top"><div><h3>The Monocle Café</h3><div class="kind">Café · £</div></div>
+   <div class="rating"><span class="n">4.4</span> <span class="stars" aria-hidden="true">★★★★☆</span><span class="c">2,187 Google reviews</span></div></div>
+   
+   <p>Tiny café from Monocle magazine with a cosy, dim downstairs.</p>
+   <div class="said"><span class="lbl">What reviewers say</span>Great matcha and iced chai, and a relaxed spot to read. It gets packed and drinks can be slow.</div>
+   <div class="meta"><span>📍 18 Chiltern St, W1</span><span>🕒 Sun 8am–8pm</span><span class="tip">→ Grab a table downstairs if you can.</span></div>
+   <div class="tags"><span class="tag">Sunday</span></div>
+   <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=The%20Monocle%20Caf%C3%A9%2018%20Chiltern%20St%2C%20W1&query_place_id=ChIJjSKnuM0adkgRA725Gi-2JFk" target="_blank" rel="noopener">Open in Google Maps</a>
+  </article><article class="card">
+   <div class="card-top"><div><h3>Rococo Chocolates</h3><div class="kind">Chocolatier</div></div>
+   <div class="rating"><span class="n">4.3</span> <span class="stars" aria-hidden="true">★★★★☆</span><span class="c">114 Google reviews</span></div></div>
+   
+   <p>Handmade truffles and flavoured bars from a much-loved British chocolatier.</p>
+   <div class="said"><span class="lbl">What reviewers say</span>You can taste before you buy, and fans swear by flavours like Earl Grey and Big Smoke.</div>
+   <div class="meta"><span>📍 3 Moxon St, W1</span><span>🕒 Sun 10am–5pm</span><span class="tip">→ A good gift to take home.</span></div>
+   <div class="tags"><span class="tag">Sunday</span></div>
+   <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Rococo%20Chocolates%203%20Moxon%20St%2C%20W1&query_place_id=ChIJbeTB6dEadkgR_efm_gex2G8" target="_blank" rel="noopener">Open in Google Maps</a>
   </article></div><div class="section-label">Monday breakfast near home</div><div class="grid"><article class="card">
    <div class="card-top"><div><h3>Vertige Café</h3><div class="kind">Café · breakfast · ££</div></div>
    <div class="rating"><span class="n">4.6</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">381 Google reviews</span></div></div>
+   
    <p>Neighbourhood café with strong coffee, brunch plates and pastries.</p>
    <div class="said"><span class="lbl">What reviewers say</span>First-rate coffee and lovely staff. The omelette, corn fritters and orange almond cake all get shout-outs.</div>
    <div class="meta"><span>📍 154 Canonbury Rd, N1</span><span>🕒 Mon 7am–4pm</span></div>
@@ -508,111 +685,88 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
   </article><article class="card">
    <div class="card-top"><div><h3>La Maison Highbury</h3><div class="kind">Café · £</div></div>
    <div class="rating"><span class="n">4.6</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">143 Google reviews</span></div></div>
+   
    <p>Sweet local coffee shop near Highbury Fields with toasties, salads and matcha.</p>
    <div class="said"><span class="lbl">What reviewers say</span>A favourite with locals for coffee, matcha and almond croissants. Quiet on weekday mornings.</div>
    <div class="meta"><span>📍 19 Calabria Rd, N5</span><span>🕒 Mon 8am–5pm</span></div>
    <div class="tags"><span class="tag">Monday</span></div>
    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=La%20Maison%20Highbury%2019%20Calabria%20Rd%2C%20N5&query_place_id=ChIJ07nLqpUbdkgR9uwdkhrLrDs" target="_blank" rel="noopener">Open in Google Maps</a>
-  </article><article class="card">
-   <div class="card-top"><div><h3>Urban Café &amp; Bistro</h3><div class="kind">Café-bistro · ££</div></div>
-   <div class="rating"><span class="n">4.9</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">1,308 Google reviews</span></div></div>
-   <p>Cosy bistro by Highbury Corner doing breakfast through dinner.</p>
-   <div class="said"><span class="lbl">What reviewers say</span>Very warm owner and staff. Pasta and lamb shank get praise; one breakfast review was disappointed with value.</div>
-   <div class="meta"><span>📍 103 St Paul's Rd, N1</span><span>🕒 Mon 9am–10pm</span><span class="tip">→ Opens 9am Monday, so only if you're not rushing.</span></div>
-   <div class="tags"><span class="tag">Monday</span></div>
-   <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Urban%20Caf%C3%A9%20%26%20Bistro%20103%20St%20Paul's%20Rd%2C%20N1&query_place_id=ChIJYbK92kUbdkgRFSoAR3W13EM" target="_blank" rel="noopener">Open in Google Maps</a>
   </article></div></section>
-  <section class="panel" id="p-food" role="tabpanel" aria-labelledby="t-food"><h2>Food & drinks</h2><p class="sub">Dinners, roasts and where to go out.</p><div class="section-label">Dinners</div><div class="grid"><article class="card">
+  <section class="panel" id="p-food" role="tabpanel" aria-labelledby="t-food"><h2>Food &amp; drinks</h2><p class="sub">Dinners, the roast and where to go out.</p><div class="section-label">Dinners</div><div class="grid"><article class="card">
    <div class="card-top"><div><h3>Lahpet</h3><div class="kind">Burmese restaurant · ££</div></div>
    <div class="rating"><span class="n">4.5</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">1,470 Google reviews</span></div></div>
+   <div class="pill booked">✓ Booked 6:45pm for 4</div>
    <p>Modern Burmese cooking with a cocktail bar. Signature tea leaf salad, coconut chicken noodles and curries.</p>
-   <div class="said"><span class="lbl">What reviewers say</span>Bold, fragrant flavours. The coconut chicken noodles, fried chicken and pandan crème brûlée come up again and again. One diner felt sides are pricey.</div>
+   <div class="said"><span class="lbl">What reviewers say</span>Bold, fragrant flavours. The coconut chicken noodles, fried chicken and pandan crème brûlée come up again and again.</div>
    <div class="meta"><span>📍 58 Bethnal Green Rd, E1</span><span>🕒 Fri 3pm–10pm</span><span class="tip">→ Order the tea leaf salad and the pandan brûlée.</span></div>
    <div class="tags"><span class="tag">Friday</span></div>
    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Lahpet%2058%20Bethnal%20Green%20Rd%2C%20E1&query_place_id=ChIJOb-UJ-YcdkgR8q4D1DuMeJ4" target="_blank" rel="noopener">Open in Google Maps</a>
   </article><article class="card">
    <div class="card-top"><div><h3>Japanese Curry Bread (Kanazawa)</h3><div class="kind">Curry bread · takeaway · £</div></div>
    <div class="rating"><span class="n">4.9</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">69 Google reviews</span></div></div>
+   
    <p>Tiny Japanese-run kiosk making kare pan (crispy fried curry buns) and nama doughnuts.</p>
-   <div class="said"><span class="lbl">What reviewers say</span>Crispy outside, fluffy inside and properly authentic. The Earl Grey nama doughnut is a cult favourite. Small team, so there may be a short wait.</div>
+   <div class="said"><span class="lbl">What reviewers say</span>Crispy outside, fluffy inside and properly authentic. The Earl Grey nama doughnut is a cult favourite.</div>
    <div class="meta"><span>📍 34 Islington Green, N1</span><span>🕒 Sat 10am–4pm · closed Mon–Tue</span><span class="tip">→ Eat it on Islington Green next door.</span></div>
    <div class="tags"><span class="tag">Saturday</span></div>
    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Japanese%20Curry%20Bread%20(Kanazawa)%2034%20Islington%20Green%2C%20N1&query_place_id=ChIJ35QkAwAbdkgR8fq6QdYjzfE" target="_blank" rel="noopener">Open in Google Maps</a>
   </article><article class="card">
    <div class="card-top"><div><h3>Som Saa</h3><div class="kind">Thai restaurant · ££</div></div>
    <div class="rating"><span class="n">4.5</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">2,548 Google reviews</span></div></div>
+   <div class="pill booked">✓ Booked 8pm for 3</div>
    <p>Regional Thai cooking with real heat, back after a fire forced a long closure.</p>
-   <div class="said"><span class="lbl">What reviewers say</span>Authentic and well spiced. The deep-fried whole sea bass is a must, along with the jungle curry, stir-fried greens and fermented pork. Great cocktails too.</div>
-   <div class="meta"><span>📍 43A Commercial St, E1</span><span>🕒 Sat 12pm–11:30pm</span><span class="tip">→ Book ahead. It's in Spitalfields, not Islington.</span></div>
+   <div class="said"><span class="lbl">What reviewers say</span>Authentic and well spiced. The deep-fried whole sea bass is a must, along with the jungle curry and fermented pork.</div>
+   <div class="meta"><span>📍 43A Commercial St, E1</span><span>🕒 Sat 12pm–11:30pm</span><span class="tip">→ It's in Spitalfields, about 25–30 min from Homeboy.</span></div>
    <div class="tags"><span class="tag">Saturday</span></div>
    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Som%20Saa%2043A%20Commercial%20St%2C%20E1&query_place_id=ChIJobyn_rQcdkgRE042NxgeR1k" target="_blank" rel="noopener">Open in Google Maps</a>
-  </article></div><div class="section-label">Sunday roasts & bites</div><div class="grid"><article class="card">
-   <div class="card-top"><div><h3>Blacklock Soho</h3><div class="kind">Chophouse · roast · ££</div></div>
-   <div class="rating"><span class="n">4.7</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">5,336 Google reviews</span></div></div>
-   <p>Basement chophouse famous for its all-in Sunday roast piled on grilled flatbread.</p>
-   <div class="said"><span class="lbl">What reviewers say</span>Perfectly charred meat, generous portions and a white chocolate cheesecake people call one of the best ever. Very hard to walk in.</div>
-   <div class="meta"><span>📍 24 Great Windmill St, W1</span><span>🕒 Sun 11:45am–8pm</span><span class="tip">→ Book now.</span></div>
-   <div class="tags"><span class="tag">Sunday · Option A</span></div>
-   <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Blacklock%20Soho%2024%20Great%20Windmill%20St%2C%20W1&query_place_id=ChIJOTAQhtMEdkgR9ZmC_mZR0UM" target="_blank" rel="noopener">Open in Google Maps</a>
-  </article><article class="card">
+  </article></div><div class="section-label">Sunday</div><div class="grid"><article class="card">
    <div class="card-top"><div><h3>Marylebone Farmers' Market</h3><div class="kind">Farmers' market</div></div>
    <div class="rating"><span class="n">4.6</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">388 Google reviews</span></div></div>
+   
    <p>One of London's best Sunday farmers' markets: produce, bakes, hot food, flowers.</p>
    <div class="said"><span class="lbl">What reviewers say</span>Fantastic variety and cheerful traders, with doughnuts and pastries to graze on. Busier later in the day.</div>
-   <div class="meta"><span>📍 St Vincent St, W1</span><span>🕒 Sun only, 10am–2pm</span><span class="tip">→ Ends at 2pm, so don't start too slowly.</span></div>
-   <div class="tags"><span class="tag">Sunday · Option B</span></div>
+   <div class="meta"><span>📍 St Vincent St, W1</span><span>🕒 Sun only, 10am–2pm</span><span class="tip">→ Ends at 2pm, so arrive by 12:30.</span></div>
+   <div class="tags"><span class="tag">Sunday</span></div>
    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Marylebone%20Farmers'%20Market%20St%20Vincent%20St%2C%20W1&query_place_id=ChIJecuoDtIadkgRR_GbSwzzU8o" target="_blank" rel="noopener">Open in Google Maps</a>
   </article><article class="card">
-   <div class="card-top"><div><h3>The Coach Makers Arms</h3><div class="kind">Pub · roast · ££</div></div>
-   <div class="rating"><span class="n">4.3</span> <span class="stars" aria-hidden="true">★★★★☆</span><span class="c">1,314 Google reviews</span></div></div>
-   <p>Classic pub downstairs with a calmer dining room upstairs.</p>
-   <div class="said"><span class="lbl">What reviewers say</span>One diner called it the best roast in ages. Sticky toffee pudding and pies are favourites, and service is quick.</div>
-   <div class="meta"><span>📍 88 Marylebone Ln, W1</span><span>🕒 Sun 12pm–10pm</span><span class="tip">→ Book the upstairs dining room.</span></div>
-   <div class="tags"><span class="tag">Sunday · Option B</span></div>
-   <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=The%20Coach%20Makers%20Arms%2088%20Marylebone%20Ln%2C%20W1&query_place_id=ChIJazv69tIadkgRIshflhWehZY" target="_blank" rel="noopener">Open in Google Maps</a>
-  </article><article class="card">
-   <div class="card-top"><div><h3>La Crêperie de Hampstead</h3><div class="kind">Crêpe stand</div></div>
-   <div class="rating"><span class="n">4.3</span> <span class="stars" aria-hidden="true">★★★★☆</span><span class="c">2,382 Google reviews</span></div></div>
-   <p>A Hampstead institution since 1977, making sweet and savoury crêpes from a little stall.</p>
-   <div class="said"><span class="lbl">What reviewers say</span>A must-do tradition for many locals and worth the queue. A few say quality can vary.</div>
-   <div class="meta"><span>📍 77a Hampstead High St, NW3</span><span>🕒 Sun 12pm–11:30pm</span><span class="tip">→ Try ham, cheese and egg, then a sweet one.</span></div>
-   <div class="tags"><span class="tag">Sunday · Option C</span></div>
-   <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=La%20Cr%C3%AAperie%20de%20Hampstead%2077a%20Hampstead%20High%20St%2C%20NW3&query_place_id=ChIJK7xz4IcadkgRVnC_XCg2aRE" target="_blank" rel="noopener">Open in Google Maps</a>
-  </article><article class="card">
-   <div class="card-top"><div><h3>The Holly Bush</h3><div class="kind">Historic pub · roast · ££</div></div>
-   <div class="rating"><span class="n">4.4</span> <span class="stars" aria-hidden="true">★★★★☆</span><span class="c">2,575 Google reviews</span></div></div>
-   <p>A cosy 18th-century pub tucked up a hill in Hampstead village, with fires and wood panelling.</p>
-   <div class="said"><span class="lbl">What reviewers say</span>Excellent roasts, quick friendly service and great desserts, especially the sticky toffee pudding.</div>
-   <div class="meta"><span>📍 22 Holly Mount, NW3</span><span>🕒 Sun 12pm–10:30pm</span><span class="tip">→ Book a table for the roast.</span></div>
-   <div class="tags"><span class="tag">Sunday · Option C</span></div>
-   <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=The%20Holly%20Bush%2022%20Holly%20Mount%2C%20NW3&query_place_id=ChIJLUnmeX0adkgRXNl19ShDnog" target="_blank" rel="noopener">Open in Google Maps</a>
-  </article></div><div class="section-label">Bars & going out</div><div class="grid"><article class="card">
+   <div class="card-top"><div><h3>The Drapers Arms</h3><div class="kind">Gastropub · roast · ££</div></div>
+   <div class="rating"><span class="n">4.2</span> <span class="stars" aria-hidden="true">★★★★☆</span><span class="c">1,305 Google reviews</span></div></div>
+   <div class="pill booked">✓ Booked 7pm for 4</div>
+   <p>Georgian Islington pub with serious cooking. The Infatuation rates it 8.1, alongside The Baring.</p>
+   <div class="said"><span class="lbl">What reviewers say</span>Google reviewers rave about the beef pie, steak and wine list, and call the upstairs room buzzy but not loud. Service can be slow.</div>
+   <div class="meta"><span>📍 44 Barnsbury St, N1</span><span>🕒 Sun 12pm–10:30pm</span><span class="tip">→ Share the côte de boeuf.</span></div>
+   <div class="tags"><span class="tag">Sunday</span></div>
+   <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=The%20Drapers%20Arms%2044%20Barnsbury%20St%2C%20N1&query_place_id=ChIJfeov2mgbdkgRlsuCvg281hU" target="_blank" rel="noopener">Open in Google Maps</a>
+  </article></div><div class="section-label">Bars &amp; going out</div><div class="grid"><article class="card">
    <div class="card-top"><div><h3>Seed Library</h3><div class="kind">Cocktail bar · ££</div></div>
    <div class="rating"><span class="n">4.6</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">463 Google reviews</span></div></div>
+   <div class="pill booked">✓ Booked 8:45pm for 4</div>
    <p>Low-lit, 70s-style lounge under the One Hundred Shoreditch hotel, from the Mr Lyan team, with vinyl DJs.</p>
-   <div class="said"><span class="lbl">What reviewers say</span>Warm retro vibe, inventive cocktails and staff who make celebrations feel special. Good for groups and dates.</div>
+   <div class="said"><span class="lbl">What reviewers say</span>Warm retro vibe, inventive cocktails and staff who make celebrations feel special.</div>
    <div class="meta"><span>📍 100 Shoreditch High St, E1</span><span>🕒 Fri 5pm–2am</span></div>
    <div class="tags"><span class="tag">Friday</span></div>
    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Seed%20Library%20100%20Shoreditch%20High%20St%2C%20E1&query_place_id=ChIJK0w18ZgddkgRQYTOSLWTceY" target="_blank" rel="noopener">Open in Google Maps</a>
   </article><article class="card">
    <div class="card-top"><div><h3>Homeboy</h3><div class="kind">Irish cocktail bar · ££</div></div>
    <div class="rating"><span class="n">4.6</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">835 Google reviews</span></div></div>
+   
    <p>Small Irish bar with excellent Guinness, cocktails and toasties.</p>
-   <div class="said"><span class="lbl">What reviewers say</span>Regulars call it their favourite bar in London. Friendly service, water kept topped up, great Bloody Mary and a laid-back early-evening feel.</div>
+   <div class="said"><span class="lbl">What reviewers say</span>Regulars call it their favourite bar in London. Friendly service, great Bloody Mary and a laid-back early-evening feel.</div>
    <div class="meta"><span>📍 108 Essex Rd, N1</span><span>🕒 Sat 12:30pm–1am</span></div>
    <div class="tags"><span class="tag">Saturday</span></div>
    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Homeboy%20108%20Essex%20Rd%2C%20N1&query_place_id=ChIJ4UBjIAobdkgR0ixhyjWiytw" target="_blank" rel="noopener">Open in Google Maps</a>
   </article><article class="card">
    <div class="card-top"><div><h3>Blues Kitchen Shoreditch</h3><div class="kind">Live music bar · ££</div></div>
    <div class="rating"><span class="n">4.4</span> <span class="stars" aria-hidden="true">★★★★☆</span><span class="c">8,817 Google reviews</span></div></div>
+   
    <p>Big American-style bar with live blues, soul and funk bands, then DJs late.</p>
-   <div class="said"><span class="lbl">What reviewers say</span>Always a vibe with a great live band and dance floor. Live music usually from about 9pm. Book ahead at weekends.</div>
+   <div class="said"><span class="lbl">What reviewers say</span>Always a vibe with a great live band and dance floor. Live music usually from about 9pm.</div>
    <div class="meta"><span>📍 134–146 Curtain Rd, EC2</span><span>🕒 Sat 11am–3am</span><span class="tip">→ Check the website for who's playing.</span></div>
    <div class="tags"><span class="tag">Saturday</span></div>
    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Blues%20Kitchen%20Shoreditch%20134%E2%80%93146%20Curtain%20Rd%2C%20EC2&query_place_id=ChIJv16nk7ocdkgR5P9wUhZgUpU" target="_blank" rel="noopener">Open in Google Maps</a>
   </article></div></section>
 </div></main>
-<footer><div class="wrap">Ratings and opening hours from Google Maps as of 1 Nov 2026; review summaries are paraphrased. Check hours on the day.</div></footer>
+<footer><div class="wrap">Last updated 1 November 2026. Ratings and opening hours from Google Maps; review summaries are paraphrased. Check hours on the day.</div></footer>
 
 <script>
 (function(){
