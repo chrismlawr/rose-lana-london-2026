@@ -158,6 +158,34 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
   .res-when{border-right:0;border-bottom:2px solid var(--butter);padding:0 0 8px;display:flex;align-items:baseline;gap:10px}
   .res-time{font-size:24px}
 }
+
+.updated{font-size:13px;color:var(--muted);margin:10px 0 0;font-variant-numeric:tabular-nums}
+.tab .short{display:none}
+.pill{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;line-height:1.4;align-self:flex-start;white-space:nowrap}
+.pill.booked{background:var(--finch);color:#1E3560}
+.pill.walkin{background:var(--peach);color:#5A2A14}
+.pill.inline{font-size:11px;padding:1px 8px;vertical-align:2px}
+.res-list{display:grid;gap:14px}
+.res{display:grid;grid-template-columns:120px 1fr;gap:18px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
+.res-when{border-right:2px solid var(--butter);padding-right:14px}
+.res-day{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.res-time{font-family:var(--display);font-size:30px;line-height:1.1;font-variant-numeric:tabular-nums}
+.res-body{min-width:0;display:flex;flex-direction:column;gap:8px}
+.res-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.res h3{font-family:var(--display);font-weight:400;font-size:22px;margin:0;line-height:1.15}
+.res dl{margin:0;display:grid;gap:4px;font-size:15px}
+.res dl div{display:grid;grid-template-columns:64px 1fr;gap:8px}
+.res dt{color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.06em;font-weight:700;padding-top:2px}
+.res dd{margin:0;min-width:0}
+.res-note{margin:0;font-size:14px;color:var(--muted)}
+@media (max-width:640px){
+  .tab .short{display:inline}
+  .tab .long{display:none}
+  .tab{font-size:14px;padding:7px 11px}
+  .res{grid-template-columns:1fr;gap:10px;padding:16px}
+  .res-when{border-right:0;border-bottom:2px solid var(--butter);padding:0 0 8px;display:flex;align-items:baseline;gap:10px}
+  .res-time{font-size:24px}
+}
 </style>
 
 </head>
@@ -167,6 +195,7 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
   <div class="eyebrow">Fri 6 – Mon 9 November 2026</div>
   <h1>Rose &amp; Lana's <em>London</em> Weekend</h1>
   <p class="lede">Shoreditch shopping, an Islington Saturday, a slow Sunday in Marylebone and a roast at The Drapers Arms. The plan, every booking, and every spot with its Google Maps link.</p>
+  <p class="updated">Last updated 1 November 2026</p>
   <p class="updated">Last updated 1 November 2026</p>
   <p class="updated">Last updated 1 November 2026</p>
 </div></header>
@@ -475,6 +504,15 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
    <div class="tags"><span class="tag">Sunday</span></div>
    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=WatchHouse%20Marylebone%2032%E2%80%9334%20New%20Cavendish%20St%2C%20W1&query_place_id=ChIJD1xcEigbdkgR_rS0GDp6t9M" target="_blank" rel="noopener">Open in Google Maps</a>
   </article><article class="card">
+   <div class="card-top"><div><h3>Special Guests</h3><div class="kind">Specialty coffee · £</div></div>
+   <div class="rating"><span class="n">4.6</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">571 Google reviews</span></div></div>
+   
+   <p>Light-roast specialty coffee bar two minutes from the farmers' market, with a long pour-over menu.</p>
+   <div class="said"><span class="lbl">What reviewers say</span>Flat whites people rank among London's best, and staff happy to talk you through the filter coffees. A bit pricey but worth it.</div>
+   <div class="meta"><span>📍 8 Aybrook St, W1</span><span>🕒 Sun 8am–4pm</span><span class="tip">→ Handy if you want a coffee at the market instead of later.</span></div>
+   <div class="tags"><span class="tag">Sunday</span></div>
+   <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Special%20Guests%208%20Aybrook%20St%2C%20W1&query_place_id=ChIJNTRGKAAbdkgR7xL7If_TBLQ" target="_blank" rel="noopener">Open in Google Maps</a>
+  </article><article class="card">
    <div class="card-top"><div><h3>The Monocle Café</h3><div class="kind">Café · £</div></div>
    <div class="rating"><span class="n">4.4</span> <span class="stars" aria-hidden="true">★★★★☆</span><span class="c">2,187 Google reviews</span></div></div>
    
@@ -655,6 +693,15 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
    <div class="meta"><span>📍 32–34 New Cavendish St, W1</span><span>🕒 Sun 9am–6pm</span></div>
    <div class="tags"><span class="tag">Sunday</span></div>
    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=WatchHouse%20Marylebone%2032%E2%80%9334%20New%20Cavendish%20St%2C%20W1&query_place_id=ChIJD1xcEigbdkgR_rS0GDp6t9M" target="_blank" rel="noopener">Open in Google Maps</a>
+  </article><article class="card">
+   <div class="card-top"><div><h3>Special Guests</h3><div class="kind">Specialty coffee · £</div></div>
+   <div class="rating"><span class="n">4.6</span> <span class="stars" aria-hidden="true">★★★★★</span><span class="c">571 Google reviews</span></div></div>
+   
+   <p>Light-roast specialty coffee bar two minutes from the farmers' market, with a long pour-over menu.</p>
+   <div class="said"><span class="lbl">What reviewers say</span>Flat whites people rank among London's best, and staff happy to talk you through the filter coffees. A bit pricey but worth it.</div>
+   <div class="meta"><span>📍 8 Aybrook St, W1</span><span>🕒 Sun 8am–4pm</span><span class="tip">→ Handy if you want a coffee at the market instead of later.</span></div>
+   <div class="tags"><span class="tag">Sunday</span></div>
+   <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Special%20Guests%208%20Aybrook%20St%2C%20W1&query_place_id=ChIJNTRGKAAbdkgR7xL7If_TBLQ" target="_blank" rel="noopener">Open in Google Maps</a>
   </article><article class="card">
    <div class="card-top"><div><h3>The Monocle Café</h3><div class="kind">Café · £</div></div>
    <div class="rating"><span class="n">4.4</span> <span class="stars" aria-hidden="true">★★★★☆</span><span class="c">2,187 Google reviews</span></div></div>
