@@ -1058,9 +1058,57 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
 </script>
 
 <script>
-/* Live street maps (Leaflet + OpenStreetMap/CARTO, no key). Only on the GitHub Pages copy; the artifact keeps the drawn maps. */
+/* Live Google Maps for each day. Only runs on the GitHub Pages copy and only once a key is set;
+   everywhere else (including the Claude artifact) the drawn maps stay. Restrict the key to chrismlawr.github.io/* */
 (function(){
- if (!/github\.io$/.test(location.hostname)) return;
+ var KEY = "";
+ if (!KEY || !/github\.io$/.test(location.hostname)) return;
+ window.__rlGoogleOn = true;
+ var failed = false;
+ function fallback(){ if (failed) return; failed = true; [].forEach.call(document.querySelectorAll(".daymap .gmap"), function(b){ b.remove(); }); if (window.__rlLeaflet) window.__rlLeaflet(); }
+ window.gm_authFailure = fallback;
+ var figs = [].slice.call(document.querySelectorAll(".daymap[data-stops]"));
+ if (!figs.length) return;
+ window.__rlMaps = function(){
+  google.maps.importLibrary("maps").then(function(){ return google.maps.importLibrary("marker"); }).then(function(){
+   var info = new google.maps.InfoWindow();
+   figs.forEach(function(f){
+    var d; try { d = JSON.parse(f.dataset.stops); } catch(e) { return; }
+    var box = document.createElement("div"); box.className = "gmap";
+    var wide = f.querySelector(".svgwide"), narrow = f.querySelector(".svgnarrow");
+    wide.parentNode.insertBefore(box, wide); wide.style.display = "none"; if (narrow) narrow.classList.add("off");
+    var map = new google.maps.Map(box, {mapId:"DEMO_MAP_ID", gestureHandling:"cooperative", mapTypeControl:false, streetViewControl:false, fullscreenControl:true});
+    var b = new google.maps.LatLngBounds(), path = [];
+    d.stops.forEach(function(s, i){
+     var pos = {lat:s.lat, lng:s.lng}; b.extend(pos); path.push(pos);
+     var pin = new google.maps.marker.PinElement({glyph:String(i+1), background:d.fill, borderColor:"#2B2A22", glyphColor:"#2B2A22"});
+     var m = new google.maps.marker.AdvancedMarkerElement({map:map, position:pos, content:pin.element, title:s.n, gmpClickable:true});
+     var q = encodeURIComponent(s.n.replace(/\s*\(.*\)$/, "") + " London");
+     var dir = "https://www.google.com/maps/dir/?api=1&destination=" + q + (s.pid ? "&destination_place_id=" + s.pid : "");
+     var open = "https://www.google.com/maps/search/?api=1&query=" + q + (s.pid ? "&query_place_id=" + s.pid : "");
+     m.addListener("gmp-click", function(){
+      var c = document.createElement("div"); c.className = "gm-card";
+      var h = document.createElement("b"); h.textContent = (i+1) + ". " + s.n; c.appendChild(h);
+      var r = document.createElement("div"); r.className = "gm-links";
+      r.innerHTML = '<a target="_blank" rel="noopener" class="gm-dir"></a><a target="_blank" rel="noopener" class="gm-open"></a>';
+      r.children[0].href = dir; r.children[0].textContent = "Directions";
+      r.children[1].href = open; r.children[1].textContent = "Open in Google Maps";
+      c.appendChild(r); info.setContent(c); info.open({map:map, anchor:m});
+     });
+    });
+    if (d.route && path.length > 1) new google.maps.Polyline({map:map, path:path, strokeOpacity:0, icons:[{icon:{path:"M 0,-1 0,1", strokeOpacity:.9, strokeColor:d.color, scale:3}, offset:"0", repeat:"14px"}]});
+    if (path.length > 1) map.fitBounds(b, 40); else { map.setCenter(path[0]); map.setZoom(16); }
+   });
+  }).catch(fallback);
+ };
+ var s = document.createElement("script"); s.onerror = fallback;
+ s.src = "https://maps.googleapis.com/maps/api/js?key=" + encodeURIComponent(KEY) + "&v=weekly&loading=async&callback=__rlMaps";
+ s.async = true; document.head.appendChild(s);
+})();
+</script>
+<script>
+/* Live street maps (Leaflet + OpenStreetMap/CARTO, no key). Only on the GitHub Pages copy; the artifact keeps the drawn maps. */
+window.__rlLeaflet = function(){
  var figs = [].slice.call(document.querySelectorAll(".daymap[data-stops]"));
  if (!figs.length) return;
  var css = document.createElement("link"); css.rel = "stylesheet";
@@ -1096,7 +1144,8 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
   });
  };
  document.head.appendChild(js);
-})();
+};
+if (/github\.io$/.test(location.hostname) && !window.__rlGoogleOn) window.__rlLeaflet();
 </script>
 </body>
 </html>
