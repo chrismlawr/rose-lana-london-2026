@@ -1144,31 +1144,39 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
     d.stops.forEach(function(s, i){ s.label = "Stop " + (i+1) + " on the day"; });
     whenVisible(box, function(){ makeMap(box, d.stops, d.color, d.fill, true); });
    });
-   // cards: Google photo + website on tap
-   [].forEach.call(document.querySelectorAll("article.card[data-pid] .gm-more"), function(btn){
-    btn.addEventListener("click", function(){
-     var card = btn.closest("article.card"), pid = card.dataset.pid;
-     btn.disabled = true; btn.textContent = "Loading…";
-     var got = cache[pid] ? Promise.resolve(cache[pid]) : google.maps.importLibrary("places").then(function(lib){
-      var place = new lib.Place({id:pid});
-      return place.fetchFields({fields:["photos","websiteURI"]}).then(function(){ cache[pid] = place; return place; });
-     });
-     got.then(function(p){
-      [].forEach.call(document.querySelectorAll('article.card[data-pid="' + pid + '"]'), function(c){
-       if (c.querySelector(".gm-photo")) return;
-       var top = c.querySelector(".card-top");
-       if (p.photos && p.photos.length){
-        var ph = p.photos[0], img = el("img", "gm-photo"); img.alt = "";
-        try { img.src = ph.getURI({maxWidth:800, maxHeight:420}); c.insertBefore(img, top); } catch(e){}
-        var au = ph.authorAttributions && ph.authorAttributions[0];
-        if (au && au.displayName){ var cr = el("div", "gm-credit", "Photo: "); cr.appendChild(au.uri ? link("", au.uri, au.displayName) : el("span", "", au.displayName)); c.insertBefore(cr, top); }
-       }
-       var b2 = c.querySelector(".gm-more");
-       if (p.websiteURI){ var w = link("webbtn", p.websiteURI, "Website"); b2.replaceWith(w); } else b2.remove();
-      });
-     }).catch(function(){ btn.disabled = false; btn.textContent = "Photo & website"; });
+   // cards: Google photo + website, loaded when a card scrolls into view (one lookup per place per visit)
+   var pending = {};
+   function fill(pid, p){
+    [].forEach.call(document.querySelectorAll('article.card[data-pid="' + pid + '"]'), function(c){
+     if (c.dataset.gmDone) return; c.dataset.gmDone = "1";
+     var top = c.querySelector(".card-top");
+     if (p.photos && p.photos.length){
+      var ph = p.photos[0], img = el("img", "gm-photo"); img.alt = ""; img.loading = "lazy";
+      try { img.src = ph.getURI({maxWidth:800, maxHeight:420}); c.insertBefore(img, top); } catch(e){}
+      var au = ph.authorAttributions && ph.authorAttributions[0];
+      if (au && au.displayName){ var cr = el("div", "gm-credit", "Photo: "); cr.appendChild(au.uri ? link("", au.uri, au.displayName) : el("span", "", au.displayName)); c.insertBefore(cr, top); }
+     }
+     var btns = c.querySelector(".cardbtns");
+     if (p.websiteURI && btns) btns.appendChild(link("webbtn", p.websiteURI, "Website"));
     });
-   });
+   }
+   function load(pid){
+    if (cache[pid]) return Promise.resolve(cache[pid]);
+    if (pending[pid]) return pending[pid];
+    pending[pid] = google.maps.importLibrary("places").then(function(lib){
+     var place = new lib.Place({id:pid});
+     return place.fetchFields({fields:["photos","websiteURI"]}).then(function(){ cache[pid] = place; return place; });
+    });
+    pending[pid].catch(function(){ delete pending[pid]; });
+    return pending[pid];
+   }
+   [].forEach.call(document.querySelectorAll(".gm-more"), function(b){ b.remove(); });
+   var cards = [].slice.call(document.querySelectorAll("article.card[data-pid]"));
+   var onSee = function(c){ var pid = c.dataset.pid; load(pid).then(function(p){ fill(pid, p); }).catch(function(){}); };
+   if ("IntersectionObserver" in window){
+    var cio = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ cio.unobserve(e.target); onSee(e.target); } }); }, {rootMargin:"300px"});
+    cards.forEach(function(c){ cio.observe(c); });
+   } else cards.forEach(onSee);
   }).catch(fallback);
  };
  var s = document.createElement("script"); s.onerror = fallback;
