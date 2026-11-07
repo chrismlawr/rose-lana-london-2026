@@ -1130,11 +1130,14 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
     fit();
     return {map:map, markers:markers, fit:fit};
    }
-   function whenVisible(node, fn){
-    if (!("IntersectionObserver" in window)) return fn();
-    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ io.disconnect(); fn(); } }); }, {rootMargin:"200px"});
-    io.observe(node);
-   }
+   var watched = [];
+   function near(n){ if (!n.offsetParent && n.getClientRects().length === 0) return false; var r = n.getBoundingClientRect(), h = window.innerHeight || 800; return r.bottom > -300 && r.top < h + 300; }
+   function check(){ watched = watched.filter(function(w){ if (near(w[0])){ w[1](); return false; } return true; }); }
+   var queued = false;
+   function schedule(){ if (queued) return; queued = true; setTimeout(function(){ queued = false; check(); }, 120); }
+   window.addEventListener("scroll", schedule, {passive:true}); window.addEventListener("resize", schedule);
+   document.addEventListener("click", function(e){ if (e.target.closest(".tab, .chip")) setTimeout(check, 60); });
+   function whenVisible(node, fn){ watched.push([node, fn]); schedule(); }
    // day maps
    [].forEach.call(document.querySelectorAll(".daymap[data-stops]"), function(f){
     var d; try { d = JSON.parse(f.dataset.stops); } catch(e) { return; }
@@ -1173,10 +1176,7 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
    [].forEach.call(document.querySelectorAll(".gm-more"), function(b){ b.remove(); });
    var cards = [].slice.call(document.querySelectorAll("article.card[data-pid]"));
    var onSee = function(c){ var pid = c.dataset.pid; load(pid).then(function(p){ fill(pid, p); }).catch(function(){}); };
-   if ("IntersectionObserver" in window){
-    var cio = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ cio.unobserve(e.target); onSee(e.target); } }); }, {rootMargin:"300px"});
-    cards.forEach(function(c){ cio.observe(c); });
-   } else cards.forEach(onSee);
+   cards.forEach(function(c){ whenVisible(c, function(){ onSee(c); }); });
   }).catch(fallback);
  };
  var s = document.createElement("script"); s.onerror = fallback;
