@@ -143,7 +143,7 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
 @media (max-width:640px){.daymap .svgwide{display:none}.daymap .svgnarrow{display:block}}
 .daymap a.maplink + a.maplink{margin-left:6px}
 @media (max-width:640px){.daymap{padding:12px}.daymap .legend{grid-template-columns:1fr}}
-.daymap .svgnarrow.off{display:none!important}.rl-pin{background:none;border:0}.rl-pin span{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;border:2px solid #2B2A22;font:700 13px/1 Karla,sans-serif;color:#2B2A22;box-shadow:0 1px 4px rgba(0,0,0,.25)}.leaflet-popup-content{margin:12px 14px}.daymap .gmap{z-index:0;width:100%;height:440px;border-radius:10px;border:1px solid var(--line);overflow:hidden}@media (max-width:640px){.daymap .gmap{height:360px}}.gm-card{font-family:var(--body);font-size:14px;display:grid;gap:8px;max-width:240px}.gm-card b{font-size:15px}.gm-links{display:flex;gap:6px;flex-wrap:wrap}.gm-links a{font-weight:700;font-size:13px;text-decoration:none;padding:5px 10px;border-radius:999px;background:var(--line);color:var(--ink)}.gm-links a.gm-dir{background:#2B2A22;color:#fff}</style>
+.gm-photo{display:block;width:100%;height:140px;object-fit:cover;border-radius:8px}.gm-credit{font-size:11px;color:#6B6650;margin-top:-4px}.gm-credit a{color:inherit}.gm-title{font-size:16px}.gm-sub{color:#6B6650;font-size:13px}.gm-note{font-size:13px;color:#2B2A22}.daymap .svgnarrow.off{display:none!important}.rl-pin{background:none;border:0}.rl-pin span{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;border:2px solid #2B2A22;font:700 13px/1 Karla,sans-serif;color:#2B2A22;box-shadow:0 1px 4px rgba(0,0,0,.25)}.leaflet-popup-content{margin:12px 14px}.daymap .gmap{z-index:0;width:100%;height:440px;border-radius:10px;border:1px solid var(--line);overflow:hidden}@media (max-width:640px){.daymap .gmap{height:360px}}.gm-card{font-family:var(--body);font-size:14px;display:grid;gap:8px;max-width:240px}.gm-card b{font-size:15px}.gm-links{display:flex;gap:6px;flex-wrap:wrap}.gm-links a{font-weight:700;font-size:13px;text-decoration:none;padding:5px 10px;border-radius:999px;background:var(--line);color:var(--ink)}.gm-links a.gm-dir{background:#2B2A22;color:#fff}</style>
 
 </head>
 <body>
@@ -1071,7 +1071,42 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
  if (!figs.length) return;
  window.__rlMaps = function(){
   google.maps.importLibrary("maps").then(function(){ return google.maps.importLibrary("marker"); }).then(function(){
-   var info = new google.maps.InfoWindow();
+   var info = new google.maps.InfoWindow({maxWidth:300});
+   var cache = {};
+   function el(tag, cls, txt){ var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
+   function link(cls, href, txt){ var a = el("a", cls, txt); a.href = href; a.target = "_blank"; a.rel = "noopener"; return a; }
+   function render(s, i, dir, open, p){
+    var c = el("div", "gm-card");
+    if (p && p.photos && p.photos.length){
+     var ph = p.photos[0], img = el("img", "gm-photo"); img.alt = ""; img.loading = "lazy";
+     try { img.src = ph.getURI({maxWidth:560, maxHeight:320}); c.appendChild(img); } catch(e){}
+     var au = ph.authorAttributions && ph.authorAttributions[0];
+     if (au && au.displayName){ var cr = el("div", "gm-credit", "Photo: "); cr.appendChild(au.uri ? link("", au.uri, au.displayName) : el("span", "", au.displayName)); c.appendChild(cr); }
+    }
+    c.appendChild(el("b", "gm-title", p && p.displayName ? p.displayName : s.n));
+    var sub = [];
+    if (p && p.rating) sub.push(p.rating.toFixed(1) + " ★" + (p.userRatingCount ? " (" + p.userRatingCount.toLocaleString() + ")" : ""));
+    if (p && p.primaryTypeDisplayName) sub.push(p.primaryTypeDisplayName);
+    if (sub.length) c.appendChild(el("div", "gm-sub", sub.join(" · ")));
+    c.appendChild(el("div", "gm-note", (i+1) + ". " + s.n));
+    var r = el("div", "gm-links");
+    r.appendChild(link("gm-dir", dir, "Directions"));
+    r.appendChild(link("", (p && p.googleMapsURI) || open, "Google Maps"));
+    if (p && p.websiteURI) r.appendChild(link("", p.websiteURI, "Website"));
+    c.appendChild(r);
+    return c;
+   }
+   function showCard(map, m, s, i, dir, open){
+    if (!s.pid){ info.setContent(render(s, i, dir, open, null)); info.open({map:map, anchor:m}); return; }
+    if (cache[s.pid]){ info.setContent(render(s, i, dir, open, cache[s.pid])); info.open({map:map, anchor:m}); return; }
+    info.setContent(render(s, i, dir, open, null)); info.open({map:map, anchor:m});
+    google.maps.importLibrary("places").then(function(lib){
+     var place = new lib.Place({id:s.pid});
+     return place.fetchFields({fields:["displayName","rating","userRatingCount","photos","websiteURI","primaryTypeDisplayName","googleMapsURI"]}).then(function(){
+      cache[s.pid] = place; info.setContent(render(s, i, dir, open, place));
+     });
+    }).catch(function(){});
+   }
    figs.forEach(function(f){
     var d; try { d = JSON.parse(f.dataset.stops); } catch(e) { return; }
     var box = document.createElement("div"); box.className = "gmap";
@@ -1086,15 +1121,7 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
      var q = encodeURIComponent(s.n.replace(/\s*\(.*\)$/, "") + " London");
      var dir = "https://www.google.com/maps/dir/?api=1&destination=" + q + (s.pid ? "&destination_place_id=" + s.pid : "");
      var open = "https://www.google.com/maps/search/?api=1&query=" + q + (s.pid ? "&query_place_id=" + s.pid : "");
-     m.addListener("gmp-click", function(){
-      var c = document.createElement("div"); c.className = "gm-card";
-      var h = document.createElement("b"); h.textContent = (i+1) + ". " + s.n; c.appendChild(h);
-      var r = document.createElement("div"); r.className = "gm-links";
-      r.innerHTML = '<a target="_blank" rel="noopener" class="gm-dir"></a><a target="_blank" rel="noopener" class="gm-open"></a>';
-      r.children[0].href = dir; r.children[0].textContent = "Directions";
-      r.children[1].href = open; r.children[1].textContent = "Open in Google Maps";
-      c.appendChild(r); info.setContent(c); info.open({map:map, anchor:m});
-     });
+     m.addListener("gmp-click", function(){ showCard(map, m, s, i, dir, open); });
     });
     if (d.route && path.length > 1) new google.maps.Polyline({map:map, path:path, strokeOpacity:0, icons:[{icon:{path:"M 0,-1 0,1", strokeOpacity:.9, strokeColor:d.color, scale:3}, offset:"0", repeat:"14px"}]});
     if (path.length > 1) map.fitBounds(b, 40); else { map.setCenter(path[0]); map.setZoom(16); }
